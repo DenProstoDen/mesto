@@ -23,6 +23,7 @@
 }
 .header__logo{
     max-width: 142px;
+    padding-bottom: 41px;
 }
 .header__line {
     margin: 0;
@@ -46,11 +47,11 @@
     grid-gap: 12px;
 }
 .profile__name {
-    max-width: 290px;
+    max-width: 294px;
     color: white;
     margin: 0;
     font-weight: 500;
-    font-size: 52px;
+    font-size: 42px;
     line-height: 48px;
 }
 .profile__specialization {
@@ -61,4 +62,54 @@
     width: 150px;
     height: 50px;
     border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile__pencil {
+    width: 24px;
+    height: 24px;
+}
+.elements {
+    margin-top: 47px;
+    max-width: 880px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px 17px;
+}
+.element {
+    background-color: white;
+    border-radius: 20px;
+    max-width: 282px;
+}
+.element__img {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.element__place {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* padding-left: 25px;
+    padding-right: 30px; */
+    padding: 25px 30px 31px 21px;
+}
+.element__text {
+    margin: 0;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+}
+.footer {
+    max-width: 318px;
+    margin-top: 67px;
+    margin-bottom: 60px;
+}
+.footer__text {
+    color: white;
+    margin: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
 }
