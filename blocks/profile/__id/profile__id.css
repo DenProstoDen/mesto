@@ -1,0 +1,6 @@
+.profile__id {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 16px;
+    padding-top: 20px;
+}

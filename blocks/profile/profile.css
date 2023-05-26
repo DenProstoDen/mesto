@@ -4,12 +4,15 @@
     flex-direction: row;
     margin-top: 36px;
     justify-content: space-between;
+    align-items: center;
 }
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 800px) {
     .profile {
         max-width: 282px;
         flex-direction: column;
         margin-top: 36px;
         align-items: center;
+        justify-content: center;
+        margin: auto;
     }
 }

@@ -22,6 +22,7 @@
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__pencil/profile__pencil.css);
 @import url(../blocks/profile/__specialization/profile__specializarion.css);
+@import url(../blocks/profile/__id/profile__id.css);
 /* * {
     border: 1px solid red;
 } */

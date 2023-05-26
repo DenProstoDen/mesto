@@ -1,4 +1,7 @@
 .profile__specialization {
     color: white;
     margin: 0;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 400;
 }
