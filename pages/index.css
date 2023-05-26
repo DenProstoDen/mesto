@@ -1,4 +1,4 @@
-.body {
+/* .body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -91,8 +91,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* padding-left: 25px;
-    padding-right: 30px; */
     padding: 25px 30px 31px 21px;
 }
 .element__text {
@@ -112,4 +110,28 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
-}
+} */
+@import url(../blocks/body/body.css);
+@import url(../blocks/page/page.css);
+
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__img/element__img.css);
+@import url(../blocks/element/__place/element__place.css);
+@import url(../blocks/element/__text/element__text.css);
+
+@import url(../blocks/elements/elements.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__text/footer__text.css);
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__line/header__line.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__pencil/profile__pencil.css);
+@import url(../blocks/profile/__specialization/profile__specializarion.css);
