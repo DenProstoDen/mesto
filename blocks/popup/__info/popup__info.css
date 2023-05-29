@@ -1,0 +1,8 @@
+.popup__info {
+    outline:none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-top: 30px;
+    width: 80%;
+}

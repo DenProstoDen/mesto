@@ -2,11 +2,12 @@
     width: 24px;
     height: 24px;
     padding-top: 39px;
-    border: 1px solid white;
-    background-color: black;
 }
 @media screen and (max-width: 800px) {
     .profile__pencil {
         padding-top: 0;
     }
+}
+.profile__pencil:hover {
+    opacity: 0.6;
 }

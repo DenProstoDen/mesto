@@ -1,0 +1,7 @@
+.popup__name {
+    outline:none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 80%;
+}
