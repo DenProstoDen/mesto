@@ -6,6 +6,8 @@
 @import url(../blocks/element/__place/element__place.css);
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__like/element__like.css);
+@import url(../blocks/element/__like-active/element__like-active.css);
+@import url(../blocks/button-style/_white/button-style_white.css);
 
 @import url(../blocks/elements/elements.css);
 
