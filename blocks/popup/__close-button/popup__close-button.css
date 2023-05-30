@@ -1,5 +1,6 @@
 .popup__close-button {
     width: 32px;
     height: 32px;
-    margin-bottom: 350px
+    margin-bottom: 350px;
+    cursor: pointer;
 }
