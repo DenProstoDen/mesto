@@ -4,3 +4,6 @@
     margin-bottom: 350px;
     cursor: pointer;
 }
+.popup__close-button:hover {
+    opacity: 0.6;
+}
