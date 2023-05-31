@@ -4,3 +4,10 @@
     grid-gap: 16px;
     padding-top: 20px;
 }
+@media screen and (max-width: 400px) {
+    .profile__id {
+        grid-gap: 12px;
+        padding-top: 26px;
+    }
+    
+}

@@ -6,9 +6,12 @@
     bottom: 10px;
     cursor: pointer;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 400px) {
     .profile__pencil {
         padding-top: 0;
+        transform: translate(138px, -50px);
+        width: 18px;
+        height: 18px;
     }
 }
 .profile__pencil:hover {

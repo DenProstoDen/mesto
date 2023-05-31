@@ -9,5 +9,6 @@
 @media screen and (max-width: 800px) {
     .elements {
         justify-content: center;
+        gap: 25px 17px;
     }
 }

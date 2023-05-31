@@ -5,3 +5,10 @@
     line-height: 21px;
     font-weight: 400;
 }
+@media screen and (max-width: 400px) {
+    .profile__specialization {
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 10px;  
+    }
+}
