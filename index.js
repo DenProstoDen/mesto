@@ -1,22 +1,20 @@
+let formElement = document.querySelector('.popup__container');
+let nameInput = document.querySelector('.popup__name');
+let infoInput = document.querySelector('.popup__info');
+let popupOpen = document.querySelector('.popup');
+let likeColor = document.querySelector('.element__like');
+
 const onOpen = () => {
-    let popupOpen = document.querySelector('.popup');
     popupOpen.classList.add('popup__opened');
 }
 
 const onClose = () => {
-    let popupClosed = document.querySelector('.popup');
-    popupClosed.classList.remove('popup__opened')
+    popupOpen.classList.remove('popup__opened')
 }
 
 const onColor = () => {
-    let likeColor = document.querySelector('.element__like');
-    likeColor.classList.toggle('element__like-active')
+    likeColor.classList.toggle('element__like_active')
 }
-
-
-let formElement = document.querySelector('.popup__container');
-let nameInput = document.querySelector('.popup__name');
-let infoInput = document.querySelector('.popup__info');
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
