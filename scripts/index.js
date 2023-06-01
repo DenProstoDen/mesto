@@ -2,19 +2,20 @@ let formElement = document.querySelector('.popup__container');
 let nameInput = document.querySelector('.popup__name');
 let infoInput = document.querySelector('.popup__info');
 let popupOpen = document.querySelector('.popup');
-// let likeColor = document.querySelector('.element__like');
+let likeColor = document.querySelector('.element__like');
+
 
 const onOpen = () => {
-    popupOpen.classList.add('popup__opened');
+    popupOpen.classList.add('popup_opened');
 }
 
 const onClose = () => {
-    popupOpen.classList.remove('popup__opened');
+    popupOpen.classList.remove('popup_opened');
 }
 
-// const onColor = () => {
-//     likeColor.classList.toggle('element__like_active');
-// }
+const onColor = () => {
+    likeColor.classList.toggle('element__like_active');
+}
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
@@ -24,7 +25,8 @@ function handleFormSubmit (evt) {
 }
 formElement.addEventListener('submit', handleFormSubmit);
 document.querySelector('.profile__pencil').addEventListener("click", onOpen);
-// likeColor.addEventListener('click', onColor)
+likeColor.addEventListener('click', onColor)
+document.querySelector('.popup__close-button').addEventListener("click", onClose);
 
-let buttons = document.querySelectorAll('.element__like');
-console.log(buttons)
+// let buttons = document.querySelectorAll('.element__like');
+// console.log(buttons)
