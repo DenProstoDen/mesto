@@ -4,7 +4,6 @@ let infoInput = document.querySelector('.popup__info');
 let popupOpen = document.querySelector('.popup');
 let likeColor = document.querySelector('.element__like');
 
-
 const onOpen = () => {
     popupOpen.classList.add('popup_opened');
 }
@@ -13,8 +12,9 @@ const onClose = () => {
     popupOpen.classList.remove('popup_opened');
 }
 
-const onColor = () => {
-    likeColor.classList.toggle('element__like_active');
+const onColor = (event) => {
+    const color = event.target.closest ('.element__like')
+    color.classList.toggle('element__like_active');
 }
 
 function handleFormSubmit (evt) {

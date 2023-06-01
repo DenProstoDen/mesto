@@ -6,14 +6,20 @@
     bottom: 8px;
     cursor: pointer;
 }
+.profile__pencil:hover {
+    opacity: 0.6;
+}
 @media screen and (max-width: 400px) {
     .profile__pencil {
-        padding-top: 0;
-        transform: translate(138px, -50px);
+        left: 115px;
+        bottom: 60px;
         width: 18px;
         height: 18px;
     }
 }
-.profile__pencil:hover {
-    opacity: 0.6;
+@media screen and (min-width: 401px) and (max-width: 800px) {
+    .profile__pencil {
+        left: 170px;
+        bottom: 60px;
+    }
 }
