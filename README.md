@@ -7,3 +7,4 @@
 
 ## Ссылка на гит-хаб
 ...
+https://denprostoden.github.io/mesto/
