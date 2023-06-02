@@ -1,6 +1,6 @@
 let formElement = document.querySelector('.popup__container');
-let nameInput = document.querySelector('.popup__name');
-let infoInput = document.querySelector('.popup__info');
+let nameInput = document.querySelector('.popup__input_type_name');
+let infoInput = document.querySelector('.popup__input_type_info');
 let popupOpen = document.querySelector('.popup');
 let likeColor = document.querySelector('.element__like');
 

@@ -3,8 +3,14 @@
     height: 24px;
     position: relative;
     right: 18px;
-    bottom: 8px;
+    top: 40px;
     cursor: pointer;
+    background-image: url(../../../images/Edit_Button.svg);
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    padding: 12px;
+    background-repeat: no-repeat;
 }
 .profile__pencil:hover {
     opacity: 0.6;
