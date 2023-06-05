@@ -3,7 +3,9 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    padding-top: 30px;
-    width: 80%;
+    padding-top: 27px;
+    width: 99%;
     height: 27px;
+    font-size: 14px;
+    border-bottom: 1px solid  rgba(0, 0, 0, 0.2);
 }

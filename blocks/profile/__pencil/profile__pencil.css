@@ -18,7 +18,7 @@
 @media screen and (max-width: 400px) {
     .profile__pencil {
         left: 115px;
-        bottom: 60px;
+        top: -70px;
         width: 18px;
         height: 18px;
     }
