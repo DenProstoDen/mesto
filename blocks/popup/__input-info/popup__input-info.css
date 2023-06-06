@@ -1,8 +1,9 @@
-.popup__input_type_name {
+.popup__input-info {
     outline:none;
     border-top: none;
     border-left: none;
     border-right: none;
+    padding-top: 27px;
     width: 99%;
     height: 27px;
     font-size: 14px;
