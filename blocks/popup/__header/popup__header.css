@@ -8,3 +8,11 @@
     line-height: 29px;
     font-family: 'Inter', sans-serif;
 }
+@media screen and (max-width: 400px) {
+    .popup__header {
+        font-size: 18px;
+        line-height: 22px;
+        align-self: center;
+        margin: 25px 0 0;
+    }        
+}
