@@ -10,5 +10,6 @@
     .elements {
         justify-content: center;
         gap: 25px 17px;
+        margin-top: 40px;
     }
 }

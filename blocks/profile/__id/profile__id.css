@@ -8,6 +8,7 @@
     .profile__id {
         grid-gap: 12px;
         padding-top: 26px;
+        margin-left: 0;
     }
     
 }
