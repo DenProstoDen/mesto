@@ -9,8 +9,8 @@
     background-color: rgba(2, 2 , 2, 0);
     font: inherit;
     padding: 0;
-    margin-left: 475px;
-    margin-top: -38px;
+    right: 390px;
+    top: 150px;
     background-image: url(../../../images/close_icon.svg);
 }
 .popup__close-button:hover {
@@ -18,8 +18,10 @@
 }
 @media screen and (max-width: 600px) {
     .popup__close-button {
-        margin-left: 250px;
-        margin-top: -52px;
+        right: 10px;
+        top: 200px;
         background-image: url(../../../images/close_icon.svg);
+        background-size: 20px;
+        background-repeat: no-repeat;
     }
 }
