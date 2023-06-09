@@ -10,26 +10,28 @@
     font: inherit;
     padding: 0;
     background-image: url(../../../images/close_icon.svg);
-    right: -8px;
-    top: -195px;
+    bottom: 190px;
+    left: 6px;
 }
 .popup__close-button:hover {
     opacity: 0.6;
 }
 @media screen and (max-width: 320px) {
     .popup__close-button {
-        position: absolute;
-        right: 10px;
-        top: 245px;
+        left: 130px;
+        bottom: 370px;
+        width: 20px;
+        height: 20px;
         background-size: 20px;
-        background-repeat: no-repeat;
     }
 }
 @media screen and (max-width: 600px) and (min-width: 321px) {
     .popup__close-button {
-        right: -8px;
+        right: 8px;
         top: -200px;
         background-size: 20px;
+        width: 20x;
+        height: 20px;
         background-repeat: no-repeat;
     }
 }
