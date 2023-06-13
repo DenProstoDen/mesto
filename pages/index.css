@@ -36,6 +36,7 @@
 
 @import url(../blocks/popup_place/popup_place.css);
 @import url(../blocks/popup_place/_opened/popup_place_opened.css);
+@import url(../blocks/element/__trash/element__trash.css);
 
 /* * {
     border: 1px solid red;
