@@ -13,6 +13,11 @@ let closePopup = document.querySelector('.popup__close-button');
 let popupPlace = document.querySelector('.popup_place');
 let closePlace = document.querySelector('.popup_place__close-button');
 
+//template
+let templateCards = document.querySelector('.template-cards');
+const container = document.querySelector('.elements');
+
+
 const initialCards = [
     {
       name: 'Архыз',
@@ -71,3 +76,29 @@ openPopup.addEventListener('click', onOpen);
 openPlace.addEventListener('click', onOpenPlace);
 closePlace.addEventListener('click', onClosePlace);
 closePopup.addEventListener('click', onClose);
+
+
+function createCard (place, link) {
+  const card = templateCards.cloneNode(true);
+  const templateImg = document.querySelector('.card__img');
+  const templateText = document.querySelector('card__text');
+
+  templateImg.textContent = link;
+  templateText.textContent = place;
+  
+  // deleteButton.addEventListener('click', function() {
+  //   card.remove();
+  // })
+
+
+}
+
+function renderCard(data, container){
+  container.append(createCard(data));
+}
+
+initialCards.forEach(function(item) {
+  const newCard = createCard(item);
+});
+
+openPlace.addEventListener('submit', renderCard)
