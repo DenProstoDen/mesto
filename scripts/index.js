@@ -6,6 +6,7 @@ let popup = document.querySelector('.popup');
 let newName = document.querySelector('.profile__name');
 let newJob = document.querySelector('.profile__specialization');
 let openPopup = document.querySelector('.profile__pencil');
+let likeButton = document.querySelector('.element__button');
 
 //popup place section
 let openPlace = document.querySelector('.profile__add-button');
@@ -14,10 +15,9 @@ let popupPlace = document.querySelector('.popup_place');
 let closePlace = document.querySelector('.popup_place__close-button');
 
 //template
-let templateCards = document.querySelector('.template-cards');
-const container = document.querySelector('.elements');
-
-
+const templateCards = document.querySelector('.template-cards').content.querySelector('.card');
+const elements = document.querySelector('.elements');
+let deleteButton = document.querySelector('.card__delete-button');
 const initialCards = [
     {
       name: 'Архыз',
@@ -78,27 +78,31 @@ closePlace.addEventListener('click', onClosePlace);
 closePopup.addEventListener('click', onClose);
 
 
-function createCard (place, link) {
-  const card = templateCards.cloneNode(true);
-  const templateImg = document.querySelector('.card__img');
-  const templateText = document.querySelector('card__text');
-
-  templateImg.textContent = link;
-  templateText.textContent = place;
+function createCard ({name, link}) {
+  const newCard = templateCards.cloneNode(true);
+  const templateImg = newCard.querySelector('.card__img');
+  const templateText = newCard.querySelector('.card__text');
   
+  templateImg.src = link;
+
+  templateText.textContent = name;
+
   // deleteButton.addEventListener('click', function() {
-  //   card.remove();
+  //   newCard.remove();
   // })
-
-
+  
+  return newCard;
 }
+
+
+
 
 function renderCard(data, container){
   container.append(createCard(data));
 }
 
 initialCards.forEach(function(item) {
-  const newCard = createCard(item);
+  renderCard(item, elements);
 });
 
-openPlace.addEventListener('submit', renderCard)
+openPlace.addEventListener('submit', renderCard);

@@ -38,6 +38,15 @@
 @import url(../blocks/popup_place/_opened/popup_place_opened.css);
 @import url(../blocks/element/__trash/element__trash.css);
 
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__delete-button/card__delete-button.css);
+@import url(../blocks/card/__description/card__description.css);
+@import url(../blocks/card/__img/card__img.css);
+@import url(../blocks/card/__like-button/card__like-button.css);
+@import url(../blocks/card/__text/card__text.css);
+
+
+
 /* * {
     border: 1px solid red;
 } */
