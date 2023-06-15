@@ -44,7 +44,7 @@
 @import url(../blocks/card/__img/card__img.css);
 @import url(../blocks/card/__like-button/card__like-button.css);
 @import url(../blocks/card/__text/card__text.css);
-
+@import url(../blocks/card/__like-button/_active/card__like-button_active.css);
 
 
 /* * {
