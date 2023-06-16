@@ -1,5 +1,6 @@
 //popup id section
 let formElement = document.querySelector('.popup__form');
+let formElementPlace = document.querySelector('.popup__form_place')
 let nameInput = document.querySelector('.popup__input_type_name');
 let infoInput = document.querySelector('.popup__input_type_info');
 let popup = document.querySelector('.popup');
@@ -76,6 +77,7 @@ closePopup.addEventListener('click', onClose);
 //template
 const templateCards = document.querySelector('.template-cards').content.querySelector('.card');
 const elements = document.querySelector('.elements');
+
 const popupPlaceName = document.querySelector('.popup__input_type_place');
 const popupLinkImg = document.querySelector('.popup__input_type_link')
 
@@ -88,7 +90,6 @@ function createCard ({name, link}) {
   const templateText = newCard.querySelector('.card__text');
   const likeButton = newCard.querySelector('.card__like-button');
   const deleteButton = newCard.querySelector('.card__delete-button');
-  console.log(deleteButton)
   
   templateImg.src = link;
   templateImg.alt = name;
@@ -101,9 +102,9 @@ likeButton.addEventListener('click', function(evt){
 
 //попап картинка
 
-// templateImg.addEventListener('click', () =>{
+templateImg.addEventListener('click', () =>{
   
-// })
+})
 
 deleteButton.addEventListener('click', () => {
   newCard.remove();
@@ -124,14 +125,12 @@ initialCards.forEach(function(item) {
   renderCard(item, elements);
 });
 
-// formElement.addEventListener('submit', function (e) {
-//   elements.preventDefault();
+formElementPlace.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  const newName = popupPlaceName.value;
+  const newImage = popupLinkImg.value;
 
-//   const newName = popupPlaceName.value;
-//   const newImage = popupLinkImg.value;
-//   renderCard(({name, link}), elements);
-// })
+  renderCard(({name: newName, link: newImage}), elements);
 
-
-
-openPlace.addEventListener('submit', renderCard);
+  closePlace()
+});
