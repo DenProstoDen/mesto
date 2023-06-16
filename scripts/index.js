@@ -77,6 +77,10 @@ closePopup.addEventListener('click', onClose);
 //template
 const templateCards = document.querySelector('.template-cards').content.querySelector('.card');
 const elements = document.querySelector('.elements');
+const popupPicture = document.querySelector('.popup_img_picture');
+const popupImgText = document.querySelector('.popup_img_text');
+const popupImg = document.querySelector('.popup_img');
+const closePopupImage = document.querySelector('.popup__close-button_img');
 
 const popupPlaceName = document.querySelector('.popup__input_type_place');
 const popupLinkImg = document.querySelector('.popup__input_type_link')
@@ -103,13 +107,20 @@ likeButton.addEventListener('click', function(evt){
 //попап картинка
 
 templateImg.addEventListener('click', () =>{
-  
-})
+  popupImg.classList.add('popup_img_opened');
+  popupPicture.src = link;
+  popupPicture.alt = name;
+  popupImgText.textContent = name;
+});
+
+function closePopupImg() {
+  popupImg.classList.remove('popup_img_opened');
+}
+closePopupImage.addEventListener('click', closePopupImg);
 
 deleteButton.addEventListener('click', () => {
   newCard.remove();
 })
-
 
   return newCard;
 }

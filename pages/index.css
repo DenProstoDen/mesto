@@ -46,7 +46,10 @@
 @import url(../blocks/card/__text/card__text.css);
 @import url(../blocks/card/__like-button/_active/card__like-button_active.css);
 
-
+@import url(../blocks/popup_img/popup_img.css);
+@import url(../blocks/popup_img/_opened/popup_img_opened.css);
+@import url(../blocks/popup_img/_text/popup_img_text.css);
+@import url(../blocks/popup_img/_img_container/popup_img_container.css);
 /* * {
     border: 1px solid red;
 } */
