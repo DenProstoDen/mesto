@@ -143,5 +143,5 @@ formElementPlace.addEventListener('submit', function (evt) {
 
   renderCard(({name: newName, link: newImage}), elements);
 
-  closePlace()
+  onClosePlace();
 });
