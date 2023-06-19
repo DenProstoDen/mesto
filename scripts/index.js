@@ -142,8 +142,8 @@ initialCards.forEach(function(item) {
 
 function setPlaceTextValue () {
   const newNameInput = inputNameFormAddNewCard.value;
-  const newImage = inputLinkFormAddNewCard.value;
-  renderCard(({name: newNameInput, link: newImage}), elements);
+  const newImageInput = inputLinkFormAddNewCard.value;
+  renderCard(({name: newNameInput, link: newImageInput}), elements);
 }
 
 function handleFormSubmitPlace(evt) {
