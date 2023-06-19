@@ -94,8 +94,8 @@ placePopup.addEventListener('click', function(){
 //template
 const templateCards = document.querySelector('.template-cards').content.querySelector('.card');
 const elements = document.querySelector('.elements');
-const popupPicture = document.querySelector('.popup-image_picture');
-const popupImgText = document.querySelector('.popup-image_text');
+const popupPicture = document.querySelector('.popup-image__picture');
+const popupImgText = document.querySelector('.popup-image__text');
 const popupImg = document.querySelector('.popup_img');
 const popupPlaceName = document.querySelector('.popup__input_type_place');
 const popupLinkImg = document.querySelector('.popup__input_type_link')
