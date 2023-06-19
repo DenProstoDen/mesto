@@ -1,0 +1,10 @@
+@media screen and (max-width: 500px) {
+    .popup_img_picture {
+        max-width: 300px;
+    }
+}
+@media screen and (min-width: 501px) and (max-width: 900px) {
+    .popup_img_picture {
+        max-width: 500px;
+    }
+}

@@ -50,6 +50,7 @@
 @import url(../blocks/popup_img/_opened/popup_img_opened.css);
 @import url(../blocks/popup_img/_text/popup_img_text.css);
 @import url(../blocks/popup_img/_img_container/popup_img_container.css);
+@import url(../blocks/popup_img/_picture/popup_img_picture.css);
 /* * {
     border: 1px solid red;
 } */
