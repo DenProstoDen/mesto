@@ -1,11 +1,11 @@
 const root = document.querySelector('.root')
 //popup id section
-const formElement = document.querySelector('.popup__form');
+const formElementProfile = document.querySelector('.popup__form');
 const formElementPlace = document.querySelector('.popup__form_place')
-const nameInput = document.querySelector('.popup__input_type_name');
-const infoInput = document.querySelector('.popup__input_type_info');
-const newNameInput = document.querySelector('.profile__name');
-const newJobInput = document.querySelector('.profile__specialization');
+const profileNameInput = document.querySelector('.popup__input_type_name');
+const profileInfoInput = document.querySelector('.popup__input_type_info');
+const newProfileName = document.querySelector('.profile__name');
+const newProfileJob = document.querySelector('.profile__specialization');
 const buttonOpenPopupProfile = document.querySelector('.profile__pencil');
 const popupProfileNode = document.querySelector('.popup-add')
 const popupImgNode = document.querySelector('.img-add');
@@ -64,13 +64,13 @@ const onClose = (modal) => {
 }
 
 function setProfilePopupValue() {
-  nameInput.value = newNameInput.textContent;
-  infoInput.value = newJobInput.textContent;
+  profileNameInput.value = newProfileName.textContent;
+  profileInfoInput.value = newProfileJob.textContent;
 }
 
 function setProfileNodeTextValue() {
-  newNameInput.textContent = nameInput.value;
-  newJobInput.textContent = infoInput.value;
+  newProfileName.textContent = profileNameInput.value;
+  newProfileJob.textContent = profileInfoInput.value;
 }
 // функция закрытия для всех popup элементов
 const closeButtonClick = (evt) => {
@@ -156,9 +156,9 @@ initialCards.forEach(function(item) {
 });
 
 function setPlaceTextValue () {
-  const newNameInput = inputNameFormAddNewCard.value;
+  const newProfileName = inputNameFormAddNewCard.value;
   const newImageInput = inputLinkFormAddNewCard.value;
-  renderCard(({name: newNameInput, link: newImageInput}), elements, 'prepend');
+  renderCard(({name: newProfileName, link: newImageInput}), elements, 'prepend');
 }
 
 function handleFormSubmitPlace(evt) {
@@ -170,4 +170,4 @@ function handleFormSubmitPlace(evt) {
 
 formElementPlace.addEventListener('submit', handleFormSubmitPlace);
 root.addEventListener('click', closeButtonClick);
-formElement.addEventListener('submit', handleProfileFormSubmit);
+formElementProfile.addEventListener('submit', handleProfileFormSubmit);
