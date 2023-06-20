@@ -132,18 +132,33 @@ function createCard ({name, link}) {
 }
 
 
-function renderCard(data, container){
-  container.append(createCard(data));
+function renderCard(data, container, position = 'append'){
+  switch (position) {
+    case "append":
+      container.append(createCard(data));
+      break;
+    case "prepend":
+      container.prepend(createCard(data));
+      break;
+    case "before":
+      container.before(createCard(data));
+      break;
+    case "after":
+      container.after(createCard(data));
+      break;
+    default:
+      break;
+  }
 }
 
 initialCards.forEach(function(item) {
-  renderCard(item, elements);
+  renderCard(item, elements, 'append');
 });
 
 function setPlaceTextValue () {
   const newNameInput = inputNameFormAddNewCard.value;
   const newImageInput = inputLinkFormAddNewCard.value;
-  renderCard(({name: newNameInput, link: newImageInput}), elements);
+  renderCard(({name: newNameInput, link: newImageInput}), elements, 'prepend');
 }
 
 function handleFormSubmitPlace(evt) {
