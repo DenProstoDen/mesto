@@ -1,6 +1,7 @@
 const root = document.querySelector('.root')
 //popup id section
-const formElementProfile = document.querySelector('.popup__form');
+const popupContainer = document.querySelector('.popup__container');
+const formElementProfile = popupContainer.querySelector('.popup__form');
 const formElementPlace = document.querySelector('.popup__form_place')
 const profileNameInput = document.querySelector('.popup__input_type_name');
 const profileInfoInput = document.querySelector('.popup__input_type_info');
@@ -9,7 +10,6 @@ const newProfileJob = document.querySelector('.profile__specialization');
 const buttonOpenPopupProfile = document.querySelector('.profile__pencil');
 const popupProfileNode = document.querySelector('.popup-add')
 const popupImgNode = document.querySelector('.img-add');
-
 //popup place section
 const buttonOpenPopupPlace = document.querySelector('.profile__add-button');
 const popupPlaceNode = document.querySelector('.popup_place-add');
