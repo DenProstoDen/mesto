@@ -1,6 +1,5 @@
 const root = document.querySelector('.root')
 //popup id section
-const popupContainer = document.querySelector('.popup__container');
 const popupProfileNode = document.querySelector('.popup-add');
 const formElementPlace = document.querySelector('.popup__form_place')
 const profileNameInput = document.querySelector('.popup__input_type_name');
