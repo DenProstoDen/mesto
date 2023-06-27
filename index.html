@@ -41,19 +41,25 @@
         <h2 class="popup__header">Редактировать профиль</h2>
         <form class="popup__form" name="personInformation">
           <input
+            minlength="2"
+            maxlength="40"
             class="popup__input popup__input_type_name"
             type="text"
             placeholder="Имя"
             name="personName"
             required
           />
+          <span id="personName-error" class="error"></span>
           <input
+            minlength="2"
+            maxlength="200"
             class="popup__input popup__input_type_info"
             type="text"
             placeholder="О себе"
             name="personJob"
             required
           />
+          <span id="personJob-error" class="error"></span>
           <button type="submit" class="popup__save-button">Сохранить</button>
         </form>
       </div>
@@ -64,12 +70,15 @@
         <h2 class="popup__header">Новое место</h2>
         <form class="popup__form popup__form_place" name="personInformation">
           <input
+            minlength="2"
+            maxlength="30"
             class="popup__input popup__input_type_place"
             type="text"
             placeholder="Место"
             name="placeName"
             required
           />
+          <span id="placeName-error" class="error"></span>
           <input
             class="popup__input popup__input_type_link"
             type="text"
@@ -77,6 +86,7 @@
             name="placeLink"
             required
           />
+          <span id="placeLink-error" class="error"></span>
           <button type="submit" class="popup__save-button">Сохранить</button>
         </form>
       </div>
@@ -99,5 +109,6 @@
       </div>
     </template>
     <script async src="./scripts/index.js" defer></script>
+    <script async src="./validation/validation.js" defer></script>
   </body>
 </html>
