@@ -13,7 +13,6 @@ function hideError(inputElement, errorElement) {
 function checkInputValidity(inputElement, formElement) {
     const isInputValid = inputElement.validity.valid;
     const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
-    console.log(errorElement);
     if(!isInputValid) {
         showError(inputElement, errorElement);
     } else {
