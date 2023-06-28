@@ -63,8 +63,10 @@ const onClose = (modal) => {
 }
 
 function setProfilePopupValue() {
+  let event = new Event('input')
   profileNameInput.value = newProfileName.textContent;
   profileInfoInput.value = newProfileJob.textContent;
+  profileNameInput.dispatchEvent(event);
 }
 
 function setProfileNodeTextValue() {
