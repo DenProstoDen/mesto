@@ -43,7 +43,7 @@ function toggleButtonState(buttonElement, isActive) {
 
 function setEventListener(formElement) {
     const inputList = formElement.querySelectorAll(config.inputSelector);
-    const submitButtonElement = formElement.querySelector(config.submitButtonSelector);
+    const submitButtonElement = formElement.querySelector(config.saveButtonSelector);
     toggleButtonState(submitButtonElement, formElement.checkValidity());
 
     [...inputList].forEach(function(inputElement){
@@ -71,7 +71,7 @@ function enableValidation(config) {
 const config = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__save-button',
+    saveButtonSelector: '.popup__save-button',
     inactiveButtonClass: 'popup__save-button_invalid',
     inputErrorClass: 'popup__input_state_invalid'
 }
