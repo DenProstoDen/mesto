@@ -52,13 +52,13 @@ const initialCards = [
 
 buttonOpenPopupProfile.addEventListener('click', function (){
   setProfilePopupValue();
-  onOpen(popupProfileNode);
+  openPopup(popupProfileNode);
 });
 
-const onOpen = (modal) => {
+const openPopup = (modal) => {
   modal.classList.add('popup_opened');
 }
-const onClose = (modal) => {
+const closePopup = (modal) => {
   modal.classList.remove('popup_opened');
 }
 
@@ -78,7 +78,7 @@ const closeButtonClick = (evt) => {
   const target = evt.target;
   const currentPopup = target.closest('.popup');
   if (target.classList.contains('popup__close-button') || target === currentPopup) {
-    onClose(currentPopup);
+    closePopup(currentPopup);
   }
 }
 
@@ -86,12 +86,12 @@ const closeButtonClick = (evt) => {
 function handleProfileFormSubmit (evt) {
     evt.preventDefault();
     setProfileNodeTextValue();
-    onClose(popupProfileNode);
+    closePopup(popupProfileNode);
 }
 
 
 buttonOpenPopupPlace.addEventListener('click', function(){
-  onOpen(popupPlaceNode);
+  openPopup(popupPlaceNode);
 });
 
 
@@ -116,7 +116,7 @@ function createCard ({name, link}) {
   //попап картинка
   templateImg.addEventListener('click', () =>{
     setImgValue();
-    onOpen(popupImgNode);
+    openPopup(popupImgNode);
   });
 
   function setImgValue() {
@@ -165,7 +165,7 @@ function setPlaceTextValue () {
 function handleFormSubmitPlace(evt) {
   evt.preventDefault();
   setPlaceTextValue();
-  onClose(popupPlaceNode);
+  closePopup(popupPlaceNode);
   evt.target.reset();
 }
 
