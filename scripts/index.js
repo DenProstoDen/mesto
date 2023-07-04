@@ -48,13 +48,6 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-
-
-buttonOpenPopupProfile.addEventListener('click', function (){
-  setProfilePopupValue();
-  openPopup(popupProfileNode);
-});
-
 const openPopup = (modal) => {
   modal.classList.add('popup_opened');
 }
@@ -62,8 +55,22 @@ const closePopup = (modal) => {
   modal.classList.remove('popup_opened');
 }
 
+document.addEventListener('keydown', function (evt) {
+  if(evt.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_opened');
+    closePopup(openPopup);
+  }
+});
+
+buttonOpenPopupProfile.addEventListener('click', function (){
+  setProfilePopupValue();
+  openPopup(popupProfileNode);
+});
+
+
+
 function setProfilePopupValue() {
-  let event = new Event('input')
+  const event = new Event('input');
   profileNameInput.value = newProfileName.textContent;
   profileInfoInput.value = newProfileJob.textContent;
   profileNameInput.dispatchEvent(event);
@@ -80,6 +87,7 @@ const closeButtonClick = (evt) => {
   if (target.classList.contains('popup__close-button') || target === currentPopup) {
     closePopup(currentPopup);
   }
+  root.removeEventListener('click', closeButtonClick, true);
 }
 
 
@@ -167,6 +175,7 @@ function handleFormSubmitPlace(evt) {
   setPlaceTextValue();
   closePopup(popupPlaceNode);
   evt.target.reset();
+  removeEventListener('submit', handleProfileFormSubmit);
 }
 
 formElementPlace.addEventListener('submit', handleFormSubmitPlace);
