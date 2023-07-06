@@ -1,55 +1,55 @@
-function showError(inputElement, errorElement) {
+function showError(inputElement, errorElement, config) {
     inputElement.classList.add(config.inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
 }
 
-function hideError(inputElement, errorElement) {
+function hideError(inputElement, errorElement, config) {
     inputElement.classList.remove(config.inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
 }
 
 
 
-function checkInputValidity(inputElement, formElement) {
+function checkInputValidity(inputElement, formElement, config) {
     const isInputValid = inputElement.validity.valid;
     const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
     if(!isInputValid) {
-        showError(inputElement, errorElement);
+        showError(inputElement, errorElement, config);
     } else {
-        hideError(inputElement, errorElement);
+        hideError(inputElement, errorElement, config);
     }
 }
 
 
-function disabledButton(buttonElement) {
+function disabledButton(buttonElement, config) {
     buttonElement.disabled = true;
     buttonElement.classList.add(config.inactiveButtonClass);
 }
 
-function enabledButton(buttonElement) {
+function enabledButton(buttonElement, config) {
     buttonElement.disabled = false;
     buttonElement.classList.remove(config.inactiveButtonClass);
 }
 
 
-function toggleButtonState(buttonElement, isActive) {
+function toggleButtonState(buttonElement, isActive, config) {
     if(!isActive) {
-        disabledButton(buttonElement);
+        disabledButton(buttonElement, config);
     } else {
-        enabledButton(buttonElement);
+        enabledButton(buttonElement, config);
     }
 }
 
 
-function setEventListener(formElement) {
+function setEventListener(formElement, config) {
     const inputList = formElement.querySelectorAll(config.inputSelector);
     const submitButtonElement = formElement.querySelector(config.saveButtonSelector);
-    toggleButtonState(submitButtonElement, formElement.checkValidity());
+    toggleButtonState(submitButtonElement, formElement.checkValidity(), config);
 
     [...inputList].forEach(function(inputElement){
         inputElement.addEventListener('input', function() {
-            toggleButtonState(submitButtonElement, formElement.checkValidity());
-            checkInputValidity(inputElement, formElement);
+            toggleButtonState(submitButtonElement, formElement.checkValidity(), config);
+            checkInputValidity(inputElement, formElement, config);
         });
     });
 

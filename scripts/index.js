@@ -53,14 +53,17 @@ const openPopup = (modal) => {
 }
 const closePopup = (modal) => {
   modal.classList.remove('popup_opened');
+  root.removeEventListener('click', closeButtonClick, true);
 }
 
-document.addEventListener('keydown', function (evt) {
-  if(evt.key === 'Escape') {
-    const openPopup = document.querySelector('.popup_opened');
-    closePopup(openPopup);
+document.addEventListener('keydown', closeByEsc);
+
+function closeByEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup); 
   }
-});
+} 
 
 buttonOpenPopupProfile.addEventListener('click', function (){
   setProfilePopupValue();
@@ -87,7 +90,6 @@ const closeButtonClick = (evt) => {
   if (target.classList.contains('popup__close-button') || target === currentPopup) {
     closePopup(currentPopup);
   }
-  root.removeEventListener('click', closeButtonClick, true);
 }
 
 
