@@ -50,10 +50,13 @@ const initialCards = [
 ];
 const openPopup = (modal) => {
   modal.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEsc);
+  root.addEventListener('click', closeButtonClick);
 }
 const closePopup = (modal) => {
   modal.classList.remove('popup_opened');
-  root.removeEventListener('click', closeButtonClick, true);
+  document.removeEventListener('keydown', closeByEsc);
+  root.removeEventListener('click', closeButtonClick);
 }
 
 document.addEventListener('keydown', closeByEsc);
@@ -177,9 +180,7 @@ function handleFormSubmitPlace(evt) {
   setPlaceTextValue();
   closePopup(popupPlaceNode);
   evt.target.reset();
-  removeEventListener('submit', handleProfileFormSubmit);
 }
 
 formElementPlace.addEventListener('submit', handleFormSubmitPlace);
-root.addEventListener('click', closeButtonClick);
 formElementProfile.addEventListener('submit', handleProfileFormSubmit);
