@@ -59,8 +59,6 @@ const closePopup = (modal) => {
   root.removeEventListener('click', closeButtonClick);
 }
 
-document.addEventListener('keydown', closeByEsc);
-
 function closeByEsc(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector('.popup_opened');
