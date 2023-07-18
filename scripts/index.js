@@ -14,12 +14,14 @@ const buttonOpenPopupPlace = document.querySelector('.profile__add-button');
 const popupPlaceNode = document.querySelector('.popup_place-add');
 
 //template
+import { Card } from "./Card.js";
+
 const templateCards = document.querySelector('.template-cards').content.querySelector('.card');
 const elements = document.querySelector('.elements');
 const popupImgPicture = document.querySelector('.popup-image__picture');
 const popupImgText = document.querySelector('.popup-image__text');
 const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place');
-const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link')
+const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
 
 
 const initialCards = [
@@ -48,6 +50,7 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
 const openPopup = (modal) => {
   modal.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
@@ -105,58 +108,65 @@ buttonOpenPopupPlace.addEventListener('click', function(){
   openPopup(popupPlaceNode);
 });
 
+function handleClickDelete (newCard) {
+  newCard.remove();
+}
 
-
-
-function createCard ({name, link}) {
-  const newCard = templateCards.cloneNode(true);
-  const templateImg = newCard.querySelector('.card__img');
-  const templateText = newCard.querySelector('.card__text');
-  const likeButton = newCard.querySelector('.card__like-button');
-  const deleteButton = newCard.querySelector('.card__delete-button');
-  
-  templateImg.src = link;
-  templateImg.alt = name;
-  templateText.textContent = name;
-
-
-  likeButton.addEventListener('click', function(evt){
-      evt.target.classList.toggle('card__like-button_active');
-  })
-
-  //попап картинка
-  templateImg.addEventListener('click', () =>{
-    setImgValue();
-    openPopup(popupImgNode);
-  });
-
-  function setImgValue() {
-    popupImgPicture.src = link;
-    popupImgPicture.alt = name;
-    popupImgText.textContent = name;
-  }
-
-  deleteButton.addEventListener('click', () => {
-    newCard.remove();
-  })
-
-  return newCard;
+function handleClickLike (evt) {
+  evt.target.toggle('card__like-button_active');
 }
 
 
+
+// function createCard ({name, link}) {
+//   const newCard = templateCards.cloneNode(true);
+//   const templateImg = newCard.querySelector('.card__img');
+//   const templateText = newCard.querySelector('.card__text');
+//   const likeButton = newCard.querySelector('.card__like-button');
+//   const deleteButton = newCard.querySelector('.card__delete-button');
+  
+//   templateImg.src = link;
+//   templateImg.alt = name;
+//   templateText.textContent = name;
+
+
+//   likeButton.addEventListener('click', function(evt){
+//       evt.target.classList.toggle('card__like-button_active');
+//   })
+
+//   //попап картинка
+//   templateImg.addEventListener('click', () =>{
+//     setImgValue();
+//     openPopup(popupImgNode);
+//   });
+
+//   function setImgValue() {
+//     popupImgPicture.src = link;
+//     popupImgPicture.alt = name;
+//     popupImgText.textContent = name;
+//   }
+
+//   deleteButton.addEventListener('click', () => {
+//     newCard.remove();
+//   })
+
+//   return newCard;
+// }
+
 function renderCard(data, container, position = 'append'){
+  const cardElement = new Card({data, handleClickDelete, handleClickLike}, '.template-cards').createCard();
   switch (position) {
     case "append":
-      container.append(createCard(data));
+      container.append(cardElement);
       break;
     case "prepend":
-      container.prepend(createCard(data));
+      container.prepend(cardElement);
       break;
     case "before":
-      container.before(createCard(data));
+      container.before(cardElement);
       break;
     case "after":
-      container.after(createCard(data));
+      container.after(cardElement);
       break;
     default:
       break;
