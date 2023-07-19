@@ -8,7 +8,6 @@ const newProfileName = document.querySelector('.profile__name');
 const newProfileJob = document.querySelector('.profile__specialization');
 const buttonOpenPopupProfile = document.querySelector('.profile__pencil');
 const formElementProfile = popupProfileNode.querySelector('.popup__form');
-const popupImgNode = document.querySelector('.img-add');
 //popup place section
 const buttonOpenPopupPlace = document.querySelector('.profile__add-button');
 const popupPlaceNode = document.querySelector('.popup_place-add');
@@ -16,10 +15,7 @@ const popupPlaceNode = document.querySelector('.popup_place-add');
 //template
 import { Card } from "./Card.js";
 
-const templateCards = document.querySelector('.template-cards').content.querySelector('.card');
 const elements = document.querySelector('.elements');
-const popupImgPicture = document.querySelector('.popup-image__picture');
-const popupImgText = document.querySelector('.popup-image__text');
 const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place');
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
 
@@ -112,10 +108,9 @@ function handleClickDelete (newCard) {
   newCard.remove();
 }
 
-function handleClickLike (evt) {
-  evt.target.toggle('card__like-button_active');
+const handleClickLike = evt => {
+  evt.target.classList.toggle('card__like-button_active');
 }
-
 
 
 // function createCard ({name, link}) {

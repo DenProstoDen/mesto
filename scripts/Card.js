@@ -52,7 +52,6 @@ export class Card {
     const templateText = this.#newCard.querySelector('.card__text');
     const likeButton = this.#newCard.querySelector('.card__like-button');
     const deleteButton = this.#newCard.querySelector('.card__delete-button');
-    const popupPlaceNode = document.querySelector('.popup_place-add');
     const popupImgPicture = document.querySelector('.popup-image__picture');
     const popupImgText = document.querySelector('.popup-image__text');
     
@@ -66,9 +65,10 @@ export class Card {
       popupImgText.textContent = this.#data.name;
     };
   
-    likeButton.addEventListener('click', function(evt){
-      evt.target.classList.toggle('card__like-button_active');
-    })
+    likeButton.addEventListener('click', (evt) =>{
+      this.#handleClickLike(evt);
+    });
+
     //попап картинка
     templateImg.addEventListener('click', () =>{
       setImgValue();
