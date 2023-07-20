@@ -112,42 +112,6 @@ const handleClickLike = evt => {
   evt.target.classList.toggle('card__like-button_active');
 }
 
-
-// function createCard ({name, link}) {
-//   const newCard = templateCards.cloneNode(true);
-//   const templateImg = newCard.querySelector('.card__img');
-//   const templateText = newCard.querySelector('.card__text');
-//   const likeButton = newCard.querySelector('.card__like-button');
-//   const deleteButton = newCard.querySelector('.card__delete-button');
-  
-//   templateImg.src = link;
-//   templateImg.alt = name;
-//   templateText.textContent = name;
-
-
-//   likeButton.addEventListener('click', function(evt){
-//       evt.target.classList.toggle('card__like-button_active');
-//   })
-
-//   //попап картинка
-//   templateImg.addEventListener('click', () =>{
-//     setImgValue();
-//     openPopup(popupImgNode);
-//   });
-
-//   function setImgValue() {
-//     popupImgPicture.src = link;
-//     popupImgPicture.alt = name;
-//     popupImgText.textContent = name;
-//   }
-
-//   deleteButton.addEventListener('click', () => {
-//     newCard.remove();
-//   })
-
-//   return newCard;
-// }
-
 function renderCard(data, container, position = 'append'){
   const cardElement = new Card({data, handleClickDelete, handleClickLike}, '.template-cards').createCard();
   switch (position) {

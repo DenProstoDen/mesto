@@ -9,7 +9,6 @@ function hideError(inputElement, errorElement, config) {
 }
 
 
-
 function checkInputValidity(inputElement, formElement, config) {
     const isInputValid = inputElement.validity.valid;
     const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
