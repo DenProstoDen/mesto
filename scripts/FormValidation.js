@@ -39,6 +39,18 @@
 //             this.enabledButton();
 //         }
 //     }
+
+//     setEventListener(formElement, config) {
+
+//     this.toggleButtonState(submitButtonElement, formElement.checkValidity(), config);
+
+//         [...inputList].forEach(function(inputElement){
+//             inputElement.addEventListener('input', function() {
+//                 this.toggleButtonState();
+//                 this.#checkInputValidity(inputElement);
+//             });
+//         });
+//     }
 //     enableValidation() {
 //         this.#setEventListener();
 //     }
