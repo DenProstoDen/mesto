@@ -1,3 +1,49 @@
+// export class formValidator {
+//     constructor(config, formElement) {
+//         this.formElement = formElement;
+
+//         this.#ormSelector = config.formSelector;
+//         this.#inputSelector = config.inputSelector;
+//         this.#saveButtonSelector = config.saveButtonSelector;
+//         this.#inactiveButtonClass = config.inactiveButtonClass;
+//         this.#inputErrorClass = config.inputErrorClass;
+//     }
+//     showError(inputElement, errorElement) {
+//         inputElement.classList.add(this.#inputErrorClass);
+//         errorElement.textContent = inputElement.validationMessage;
+//     }
+//     hideError(inputElement, errorElement) {
+//         inputElement.classList.remove(this.#inputErrorClass);
+//         errorElement.textContent = inputElement.validationMessage;
+//     }
+//     #checkInputValidity(inputElement) {
+//         const errorElement = this.formElement.querySelector(`#${inputElement.name}-error`);
+//         if(!isInputValid) {
+//             this.showError(inputElement, errorElement);
+//         } else {
+//             this.hideError(inputElement, errorElement);
+//         }
+//     }
+//     disabledButton() {
+//         this.#buttonElement.disabled = true;
+//         this.#buttonElement.classList.add(this.#inactiveButtonClass);
+//     }
+//     enabledButton() {
+//         this.#buttonElement.disabled = false;
+//         this.#buttonElement.classList.remove(config.inactiveButtonClass);
+//     }
+//     toggleButtonState(isActive) {
+//         if(!isActive) {
+//             this.disabledButton();
+//         } else {
+//             this.enabledButton();
+//         }
+//     }
+//     enableValidation() {
+//         this.#setEventListener();
+//     }
+// }
+
 function showError(inputElement, errorElement, config) {
     inputElement.classList.add(config.inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
