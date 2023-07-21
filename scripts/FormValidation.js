@@ -32,11 +32,11 @@
 //         this.#buttonElement.disabled = false;
 //         this.#buttonElement.classList.remove(config.inactiveButtonClass);
 //     }
-//     toggleButtonState(isActive) {
+//     toggleButtonState(isActive, buttonElement) {
 //         if(!isActive) {
-//             this.disabledButton();
+//             this.disabledButton(buttonElement);
 //         } else {
-//             this.enabledButton();
+//             this.enabledButton(buttonElement);
 //         }
 //     }
 
