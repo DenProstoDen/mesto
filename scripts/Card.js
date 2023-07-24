@@ -83,5 +83,4 @@ export class Card {
   getView() {
     return this.#newCard;
   }
-  
 }

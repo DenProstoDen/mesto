@@ -1,3 +1,7 @@
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidation.js";
+import { config } from './configs.js';
+
 const root = document.querySelector('.root')
 //popup id section
 const popupProfileNode = document.querySelector('.popup-add');
@@ -13,11 +17,18 @@ const buttonOpenPopupPlace = document.querySelector('.profile__add-button');
 const popupPlaceNode = document.querySelector('.popup_place-add');
 
 //template
-import { Card } from "./Card.js";
 
 const elements = document.querySelector('.elements');
 const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place');
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
+
+
+const  setFormProfilePopupValue = new FormValidator (handleProfileFormSubmit, config);
+setFormProfilePopupValue.enableValidation();
+
+const setFormPlacePopupValue = new FormValidator(handleFormSubmitPlace, config);
+setFormPlacePopupValue.enableValidation();
+
 
 
 const initialCards = [
@@ -69,7 +80,6 @@ buttonOpenPopupProfile.addEventListener('click', function (){
   setProfilePopupValue();
   openPopup(popupProfileNode);
 });
-
 
 
 function setProfilePopupValue() {
@@ -132,6 +142,7 @@ function renderCard(data, container, position = 'append'){
   }
 }
 
+
 initialCards.forEach(function(item) {
   renderCard(item, elements, 'append');
 });
@@ -148,6 +159,7 @@ function handleFormSubmitPlace(evt) {
   closePopup(popupPlaceNode);
   evt.target.reset();
 }
+
 
 formElementPlace.addEventListener('submit', handleFormSubmitPlace);
 formElementProfile.addEventListener('submit', handleProfileFormSubmit);
