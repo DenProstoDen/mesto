@@ -23,10 +23,10 @@ const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
 
 
-const  setFormProfilePopupValue = new FormValidator (handleProfileFormSubmit, config);
+const  setFormProfilePopupValue = new FormValidator (config, handleProfileFormSubmit);
 setFormProfilePopupValue.enableValidation();
 
-const setFormPlacePopupValue = new FormValidator(handleFormSubmitPlace, config);
+const setFormPlacePopupValue = new FormValidator(config, handleFormSubmitPlace);
 setFormPlacePopupValue.enableValidation();
 
 
@@ -76,7 +76,8 @@ function closeByEsc(evt) {
   }
 } 
 
-buttonOpenPopupProfile.addEventListener('click', function (){
+buttonOpenPopupProfile.addEventListener('click', () => {
+  setFormProfilePopupValue.disabledButton(); 
   setProfilePopupValue();
   openPopup(popupProfileNode);
 });
@@ -110,8 +111,9 @@ function handleProfileFormSubmit (evt) {
 }
 
 
-buttonOpenPopupPlace.addEventListener('click', function(){
+buttonOpenPopupPlace.addEventListener('click', () => {
   openPopup(popupPlaceNode);
+  setFormProfilePopupValue.disabledButton();
 });
 
 function handleClickDelete (newCard) {
