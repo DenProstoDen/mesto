@@ -27,23 +27,16 @@ export class FormValidator {
         errorElement.textContent = inputElement.validationMessage;
     }
 
-    #checkInputValidity(inputElement, formElement) {
-        const isInputValid = inputElement.validity.valid;
-        const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
-        if(!isInputValid) {
-            this.showError(inputElement, errorElement);
-        } else {
-            this.hideError(inputElement, errorElement);
-        }
-    }
     disabledButton() {
         this.buttonElement.disabled = true;
         this.buttonElement.classList.add(this.#inactiveButtonClass);
     }
+
     enabledButton() {
         this.buttonElement.disabled = false;
         this.buttonElement.classList.remove(this.#inactiveButtonClass);
     }
+    
     #toggleButtonState(isActive) {
         if(!isActive) {
             this.disabledButton(this.buttonElement);
@@ -51,6 +44,20 @@ export class FormValidator {
             this.enabledButton(this.buttonElement);
         }
     }
+
+    #checkInputValidity(inputElement, formElement) {
+        const isInputValid = inputElement.validity.valid;
+        const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
+
+        if(!isInputValid) {
+            this.#showError(inputElement, errorElement);
+        } else {
+            this.#hideError(inputElement, errorElement);
+        }
+    }
+
+
+
 
     #setEventListener(formElement) {
         const inputList = formElement.querySelectorAll(this.#inputSelector);

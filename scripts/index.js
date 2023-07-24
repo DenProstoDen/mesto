@@ -1,6 +1,6 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidation.js";
-import { config } from './configs.js';
+import { config } from "./configs.js";
 
 const root = document.querySelector('.root')
 //popup id section

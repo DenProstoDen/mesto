@@ -1,9 +1,9 @@
 const configs = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
-    buttonSelector: '.popup__save-button',
-    inActiveButtonClass: 'popup__save-button_invalid',
-    inputErrorClass: 'popup__input_invalid'
+    saveButtonSelector: '.popup__save-button',
+    inactiveButtonClass: 'popup__save-button_invalid',
+    inputErrorClass: 'popup__input_state_invalid'
 };
 
 export {configs as config};
