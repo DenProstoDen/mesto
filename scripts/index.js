@@ -102,7 +102,16 @@ const closeButtonClick = (evt) => {
     closePopup(currentPopup);
   }
 }
+export function handleOpenPopup(name, link) {
+  const popupImgNode = document.querySelector('.img-add');
+  const popupImgPicture = document.querySelector('.popup-image__picture');
+  const popupImgText = document.querySelector('.popup-image__text');
 
+  openPopup(popupImgNode);
+  popupImgPicture.src = link;
+  popupImgText.tex = name; 
+  popupImgText.alt = name;
+}
 
 function handleProfileFormSubmit (evt) {
     evt.preventDefault();
@@ -125,7 +134,7 @@ const handleClickLike = evt => {
 }
 
 function renderCard(data, container, position = 'append'){
-  const cardElement = new Card({data, handleClickDelete, handleClickLike}, '.template-cards').createCard();
+  const cardElement = new Card({data, handleClickDelete, handleClickLike, handleOpenPopup}, '.template-cards').createCard();
   switch (position) {
     case "append":
       container.append(cardElement);
@@ -149,7 +158,7 @@ initialCards.forEach(function(item) {
   renderCard(item, elements, 'append');
 });
 
-function setPlaceTextValue () {
+function addNewPlace () {
   const newProfileName = inputNameFormAddNewCard.value;
   const newImageInput = inputLinkFormAddNewCard.value;
   renderCard(({name: newProfileName, link: newImageInput}), elements, 'prepend');
@@ -157,7 +166,7 @@ function setPlaceTextValue () {
 
 function handleFormSubmitPlace(evt) {
   evt.preventDefault();
-  setPlaceTextValue();
+  addNewPlace();
   closePopup(popupPlaceNode);
   evt.target.reset();
 }
