@@ -14,7 +14,6 @@ export class Card {
     this.#handleOpenPopup = handleOpenPopup;
   }
 
-
   #getTemplate() {
     return document
       .querySelector(this.#templateSelector)

@@ -15,6 +15,7 @@ export class FormValidator {
         this.#inactiveButtonClass = config.inactiveButtonClass;
         this.#inputErrorClass = config.inputErrorClass;
         this.#formElement = formElement;
+        console.log(formElement)
     }
 
     #showError(inputElement, errorElement) {
