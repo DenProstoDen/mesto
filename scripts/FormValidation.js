@@ -6,6 +6,8 @@ export class FormValidator {
     #saveButtonSelector;
     #inactiveButtonClass;
     #inputErrorClass;
+    #inputList
+    #formList
 
     constructor(config, formElement) {
         this.#config = config;
@@ -15,7 +17,8 @@ export class FormValidator {
         this.#inactiveButtonClass = config.inactiveButtonClass;
         this.#inputErrorClass = config.inputErrorClass;
         this.#formElement = formElement;
-        console.log(formElement)
+        // this.#inputList = Array.from(this.#formSelector.querySelectorAll(this.#inputSelector));
+        // this.formList = this.formElement.querySelector(this.#formSelector);
     }
 
     #showError(inputElement, errorElement) {
