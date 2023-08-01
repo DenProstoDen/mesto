@@ -23,11 +23,6 @@ const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
 
 
-const  setFormProfilePopupValue = new FormValidator (config, handleProfileFormSubmit);
-setFormProfilePopupValue.enableValidation();
-
-const setFormPlacePopupValue = new FormValidator(config, handleFormSubmitPlace);
-setFormPlacePopupValue.enableValidation();
 
 
 
@@ -120,6 +115,7 @@ function handleProfileFormSubmit (evt) {
 }
 
 
+
 buttonOpenPopupPlace.addEventListener('click', () => {
   openPopup(popupPlaceNode);
   setFormProfilePopupValue.disabledButton();
@@ -172,5 +168,12 @@ function handleFormSubmitPlace(evt) {
 }
 
 
+
 formElementPlace.addEventListener('submit', handleFormSubmitPlace);
 formElementProfile.addEventListener('submit', handleProfileFormSubmit);
+
+const  setFormProfilePopupValue = new FormValidator (config, handleProfileFormSubmit);
+setFormProfilePopupValue.enableValidation();
+
+const setFormPlacePopupValue = new FormValidator(config, handleFormSubmitPlace);
+setFormPlacePopupValue.enableValidation();
