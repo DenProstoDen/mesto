@@ -23,11 +23,6 @@ const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
 
 
-const  formEdit = new FormValidator (config, handleProfileFormSubmit);
-formEdit.enableValidation();
-
-const formAdd = new FormValidator(config, handleProfileFormSubmit);
-formAdd.enableValidation();
 
 
 
@@ -175,3 +170,8 @@ function handleFormSubmitPlace(evt) {
 formElementPlace.addEventListener('submit', handleFormSubmitPlace);
 formElementProfile.addEventListener('submit', handleProfileFormSubmit);
 
+const  formEdit = new FormValidator (config, handleProfileFormSubmit);
+formEdit.enableValidation();
+
+const formAdd = new FormValidator(config, handleProfileFormSubmit);
+formAdd.enableValidation();

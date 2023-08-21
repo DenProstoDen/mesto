@@ -12,13 +12,12 @@ export class FormValidator {
     constructor(config, formElement) {
         this.#config = config;
         this.#formElement = formElement;
-        console.dir(this.#formElement)
         this.#formSelector = config.formSelector;
         this.#inputSelector = config.inputSelector;
         this.#saveButtonSelector = config.saveButtonSelector;
         this.#inactiveButtonClass = config.inactiveButtonClass;
         this.#inputErrorClass = config.inputErrorClass;
-        this.#inputList = Array.from(this.#formElement.querySelectorAll(this.#inputSelector));
+        this.#inputList = Array.from(this.#formSelector.querySelectorAll(this.#inputSelector));
         this.#buttonElement = this.#formElement.querySelector(this.#saveButtonSelector);
     }
 
