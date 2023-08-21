@@ -11,13 +11,13 @@ export class FormValidator {
 
     constructor(config, formElement) {
         this.#config = config;
+        this.#formElement = formElement;
+        console.dir(this.#formElement)
         this.#formSelector = config.formSelector;
         this.#inputSelector = config.inputSelector;
         this.#saveButtonSelector = config.saveButtonSelector;
         this.#inactiveButtonClass = config.inactiveButtonClass;
         this.#inputErrorClass = config.inputErrorClass;
-        this.#formElement = formElement;
-        console.log(formElement)
         this.#inputList = Array.from(this.#formElement.querySelectorAll(this.#inputSelector));
         this.#buttonElement = this.#formElement.querySelector(this.#saveButtonSelector);
     }
@@ -42,7 +42,7 @@ export class FormValidator {
         this.buttonElement.classList.remove(this.#inactiveButtonClass);
     }
     
-    #toggleButtonState( ) {
+    #toggleButtonState(isActive) {
         if(!isActive) {
             this.disabledButton(this.buttonElement);
         } else {
@@ -53,16 +53,12 @@ export class FormValidator {
     #checkInputValidity(inputElement, formElement) {
         const isInputValid = inputElement.validity.valid;
         const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
-
-        if(!isInputValid) {
+        if(!isInputValid) {m
             this.#showError(inputElement, errorElement);
         } else {
             this.#hideError(inputElement, errorElement);
         }
     }
-
-
-
 
     #setEventListener() {
         this.#toggleButtonState();
@@ -75,6 +71,9 @@ export class FormValidator {
         });
     }
     enableValidation() {
+        this.#formElement.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            });
         this.#setEventListener();
     }
 }
