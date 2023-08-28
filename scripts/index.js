@@ -104,8 +104,8 @@ export function handleOpenPopup(name, link) {
 
   openPopup(popupImgNode);
   popupImgPicture.src = link;
-  popupImgText.tex = name; 
-  popupImgText.alt = name;
+  popupImgPicture.alt = name;  
+  popupImgText.textContent = name;
 }
 
 function handleProfileFormSubmit (evt) {
