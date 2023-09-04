@@ -17,6 +17,8 @@ export class FormValidator {
         this.#saveButtonSelector = config.saveButtonSelector;
         this.#inactiveButtonClass = config.inactiveButtonClass;
         this.#inputErrorClass = config.inputErrorClass;
+        console.log(this.#inputList)
+        console.log(Array.from(this.#formElement))
         this.#inputList = Array.from(this.#formElement.querySelectorAll(this.#inputSelector));
         this.#buttonElement = this.#formElement.querySelector(this.#saveButtonSelector);
     }

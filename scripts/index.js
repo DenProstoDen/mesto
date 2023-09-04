@@ -22,7 +22,11 @@ const elements = document.querySelector('.elements');
 const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place');
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
 
+const  formEdit = new FormValidator (config, handleProfileFormSubmit);
+formEdit.enableValidation();
 
+const formAdd = new FormValidator(config, handleFormSubmitPlace);
+formAdd.enableValidation();
 
 
 
@@ -72,7 +76,7 @@ function closeByEsc(evt) {
 } 
 
 buttonOpenPopupProfile.addEventListener('click', () => {
-  setFormProfilePopupValue.disabledButton(); 
+ formEdit.disabledButton(); 
   setProfilePopupValue();
   openPopup(popupProfileNode);
 });
@@ -116,7 +120,7 @@ function handleProfileFormSubmit (evt) {
 
 buttonOpenPopupPlace.addEventListener('click', () => {
   openPopup(popupPlaceNode);
-  setFormProfilePopupValue.disabledButton();
+  formAdd.disabledButton();
 });
 
 function handleClickDelete (newCard) {
@@ -165,13 +169,6 @@ function handleFormSubmitPlace(evt) {
   evt.target.reset();
 }
 
-
-
 formElementPlace.addEventListener('submit', handleFormSubmitPlace);
 formElementProfile.addEventListener('submit', handleProfileFormSubmit);
 
-const  formEdit = new FormValidator (config, handleProfileFormSubmit);
-formEdit.enableValidation();
-
-const formAdd = new FormValidator(config, handleProfileFormSubmit);
-formAdd.enableValidation();
