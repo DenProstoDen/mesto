@@ -23,4 +23,18 @@ export class PopupWithForm {
           inputElement.value = data[inputElement.name];
         })
     }
+    renderLoading(isLoading, loadingText='Сохранение...') {
+        isLoading
+          ?  this._submitButton.textContent = loadingText
+          :  this._submitButton.textContent = this._submitButtonText;
+    }
+
+    setEventListeners() {
+    this._form.addEventListener('submit', evt => {
+      evt.preventDefault();
+      const data = this._getInputValues();
+      this._submitter(data);
+    });
+    super.setEventListeners();
+  }
 }
