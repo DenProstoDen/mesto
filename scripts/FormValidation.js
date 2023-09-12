@@ -9,7 +9,7 @@ export class FormValidator {
     #inputList
     #buttonElement
 
-    constructor(config, formElement) {
+    constructor(formElement, config) {
         this.#config = config;
         this.#formElement = formElement;
         this.#formSelector = config.formSelector;
@@ -17,8 +17,6 @@ export class FormValidator {
         this.#saveButtonSelector = config.saveButtonSelector;
         this.#inactiveButtonClass = config.inactiveButtonClass;
         this.#inputErrorClass = config.inputErrorClass;
-        console.log(this.#inputList)
-        console.log(Array.from(this.#formElement))
         this.#inputList = Array.from(this.#formElement.querySelectorAll(this.#inputSelector));
         this.#buttonElement = this.#formElement.querySelector(this.#saveButtonSelector);
     }
@@ -34,27 +32,27 @@ export class FormValidator {
     }
 
     disabledButton() {
-        this.buttonElement.disabled = true;
-        this.buttonElement.classList.add(this.#inactiveButtonClass);
+        this.#buttonElement.disabled = true;
+        this.#buttonElement.classList.add(this.#inactiveButtonClass);
     }
 
     enabledButton() {
-        this.buttonElement.disabled = false;
-        this.buttonElement.classList.remove(this.#inactiveButtonClass);
+        this.#buttonElement.disabled = false;
+        this.#buttonElement.classList.remove(this.#inactiveButtonClass);
     }
     
     #toggleButtonState(isActive) {
         if(!isActive) {
-            this.disabledButton(this.buttonElement);
+            this.disabledButton(this.#buttonElement);
         } else {
-            this.enabledButton(this.buttonElement);
+            this.enabledButton(this.#buttonElement);
         }
     }
 
-    #checkInputValidity(inputElement, formElement) {
+    #checkInputValidity(inputElement) {
         const isInputValid = inputElement.validity.valid;
-        const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
-        if(!isInputValid) {m
+        const errorElement = this.#formElement.querySelector(`#${inputElement.name}-error`);
+        if(!isInputValid) {
             this.#showError(inputElement, errorElement);
         } else {
             this.#hideError(inputElement, errorElement);
@@ -66,7 +64,7 @@ export class FormValidator {
 
     [...this.#inputList].forEach((inputElement) =>{
             inputElement.addEventListener('input', () => {
-                this.#toggleButtonState(this.#buttonElement, formElement.checkValidity());
+                this.#toggleButtonState(this.#buttonElement, this.#formElement.checkValidity());
                 this.#checkInputValidity(inputElement);
             });
         });

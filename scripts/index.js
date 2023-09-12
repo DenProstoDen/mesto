@@ -11,7 +11,7 @@ const profileInfoInput = document.querySelector('.popup__input_type_info');
 const newProfileName = document.querySelector('.profile__name');
 const newProfileJob = document.querySelector('.profile__specialization');
 const buttonOpenPopupProfile = document.querySelector('.profile__pencil');
-const formElementProfile = popupProfileNode.querySelector('.popup__form');
+// const formElementProfile = popupProfileNode.querySelector('.popup__form');
 //popup place section
 const buttonOpenPopupPlace = document.querySelector('.profile__add-button');
 const popupPlaceNode = document.querySelector('.popup_place-add');
@@ -22,11 +22,14 @@ const elements = document.querySelector('.elements');
 const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place');
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
 
-const  formEdit = new FormValidator (config, handleProfileFormSubmit);
-formEdit.enableValidation();
 
-const formAdd = new FormValidator(config, handleFormSubmitPlace);
-formAdd.enableValidation();
+
+
+const formList = document.querySelectorAll('.popup__form');
+formList.forEach((form) => {
+  const formValidator = new FormValidator(form, config);
+  formValidator.enableValidation()
+})
 
 
 
@@ -76,7 +79,6 @@ function closeByEsc(evt) {
 } 
 
 buttonOpenPopupProfile.addEventListener('click', () => {
- formEdit.disabledButton(); 
   setProfilePopupValue();
   openPopup(popupProfileNode);
 });
@@ -120,7 +122,6 @@ function handleProfileFormSubmit (evt) {
 
 buttonOpenPopupPlace.addEventListener('click', () => {
   openPopup(popupPlaceNode);
-  formAdd.disabledButton();
 });
 
 function handleClickDelete (newCard) {
@@ -168,7 +169,4 @@ function handleFormSubmitPlace(evt) {
   closePopup(popupPlaceNode);
   evt.target.reset();
 }
-
-formElementPlace.addEventListener('submit', handleFormSubmitPlace);
-formElementProfile.addEventListener('submit', handleProfileFormSubmit);
 
