@@ -1,6 +1,18 @@
 import { Card } from "./Card.js";
+
 import { FormValidator } from "./FormValidation.js";
+
 import { config } from "./configs.js";
+
+import  { Popup }  from "./Popup.js";
+
+import { PopupWithImage } from "./PopupWithImage.js";
+
+import { PopupWithForm } from "../scripts/PopupWithForm.js";
+
+import { UserInfo } from "../scripts/UserInfo.js";
+
+import Section from "../scripts/Section.js";
 
 const root = document.querySelector('.root')
 //popup id section
