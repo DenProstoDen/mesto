@@ -168,16 +168,14 @@ initialCards.forEach(function(item) {
   renderCard(item, elements, 'append');
 });
 
-function addNewPlace () {
-  const newProfileName = inputNameFormAddNewCard.value;
-  const newImageInput = inputLinkFormAddNewCard.value;
-  renderCard(({name: newProfileName, link: newImageInput}), elements, 'prepend');
-}
+buttonOpenPopupProfile.addEventListener("click", () => {
+  const info = newUserInfo.getUserInfo();
+  popupProfile.setinputValues(info);
+  editProfileForm.resetValidation();
+  popupProfile.open();
+});
 
-function handleFormSubmitPlace(evt) {
-  evt.preventDefault();
-  addNewPlace();
-  closePopup(popupPlaceNode);
-  evt.target.reset();
-}
-
+const newUserInfo = new UserInfo({
+  userName: "popup__input_type_name",
+  userJob: "popup__input_type_info",
+});
