@@ -26,7 +26,7 @@ const buttonOpenPopupProfile = document.querySelector('.profile__pencil');
 //popup place section
 const buttonOpenPopupPlace = document.querySelector('.profile__add-button');
 const popupPlaceNode = document.querySelector('.popup_place-add');
-
+const elementsListSelector = ".elements"
 //template
 
 const elements = document.querySelector('.elements');
@@ -168,14 +168,21 @@ initialCards.forEach(function(item) {
   renderCard(item, elements, 'append');
 });
 
-buttonOpenPopupProfile.addEventListener("click", () => {
-  const info = newUserInfo.getUserInfo();
-  popupProfile.setinputValues(info);
-  editProfileForm.resetValidation();
-  popupProfile.open();
+const popupProfile = new PopupWithForm({
+  popupSelector: popupPlaceNode,
+  submitter: (data) => {
+    UserInfo.setinputValues(data);
+    popupPlaceNode.close();
+  },
 });
+
+buttonOpenPopupProfile.addEventListener("click", openPopup);
 
 const newUserInfo = new UserInfo({
   userName: "popup__input_type_name",
   userJob: "popup__input_type_info",
 });
+
+
+
+const cardSection = new Section({ renderer: renderCard },  elementsListSelector);
