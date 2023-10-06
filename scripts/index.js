@@ -114,16 +114,16 @@ const closeButtonClick = (evt) => {
     closePopup(currentPopup);
   }
 }
-export function handleOpenPopup(name, link) {
-  const popupImgNode = document.querySelector('.img-add');
-  const popupImgPicture = document.querySelector('.popup-image__picture');
-  const popupImgText = document.querySelector('.popup-image__text');
+// export function handleOpenPopup(name, link) {
+//   const popupImgNode = document.querySelector('.img-add');
+//   const popupImgPicture = document.querySelector('.popup-image__picture');
+//   const popupImgText = document.querySelector('.popup-image__text');
 
-  openPopup(popupImgNode);
-  popupImgPicture.src = link;
-  popupImgPicture.alt = name;  
-  popupImgText.textContent = name;
-}
+//   openPopup(popupImgNode);
+//   popupImgPicture.src = link;
+//   popupImgPicture.alt = name;  
+//   popupImgText.textContent = name;
+// }
 
 function handleProfileFormSubmit (evt) {
     evt.preventDefault();
@@ -141,6 +141,12 @@ function handleClickDelete (newCard) {
 
 const handleClickLike = evt => {
   evt.target.classList.toggle('card__like-button_active');
+}
+
+const popupImgNode = new PopupWithImage(".img-add");
+
+function  handleOpenPopup(name, link) {
+  popupImgNode.openImagePopup(name, link);
 }
 
 function renderCard(data, container, position = 'append'){
@@ -176,7 +182,9 @@ const popupProfile = new PopupWithForm({
   },
 });
 
-buttonOpenPopupProfile.addEventListener("click", openPopup);
+buttonOpenPopupProfile.addEventListener("click", popupPlaceNode);
+
+
 
 const newUserInfo = new UserInfo({
   userName: "popup__input_type_name",
