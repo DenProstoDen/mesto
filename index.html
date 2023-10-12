@@ -28,7 +28,7 @@
           <button class="profile__add-button" type="button"></button>
         </section>
         <section class="elements">
-        
+          <ul class="elements__list elements"></ul>
         </section>
       </main>
       <footer class="footer">
@@ -39,7 +39,7 @@
       <div class="popup__container">
         <button type="button" class="popup__close-button"></button>
         <h2 class="popup__header">Редактировать профиль</h2>
-        <form class="popup__form" name="personName">
+        <form id="formEditProfile" class="popup__form" name="personName">
           <input
             minlength="2"
             maxlength="40"
@@ -68,7 +68,7 @@
       <div class="popup__container">
         <button type="button" class="popup__close-button"></button>
         <h2 class="popup__header">Новое место</h2>
-        <form class="popup__form popup__form_place" name="personInformation">
+        <form id="formEditPlace" class="popup__form popup__form_place" name="personInformation">
           <input
             minlength="2"
             maxlength="30"
