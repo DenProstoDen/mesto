@@ -10,18 +10,16 @@ import { PopupWithForm } from "../scripts/PopupWithForm.js";
 
 import { UserInfo } from "../scripts/UserInfo.js";
 
-import Section from "../scripts/Section.js";
+import { Section } from "../scripts/Section.js";
 
 //popup id section
-const popupProfileNode = document.querySelector('.popup-add');
 const profileNameInput = document.querySelector('.popup__input_type_name');
 const profileInfoInput = document.querySelector('.popup__input_type_info');
+
 
 //popup place section
 const buttonOpenPopupPlace = document.querySelector('.profile__add-button');
 const buttonOpenPopupProfile = document.querySelector('.profile__pencil');
-const popupPlaceNode = document.querySelector('.popup_place-add');
-const elementsListSelector = (".elements")
 //template
 const cards = document.querySelector('.elements__list')
 const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place');
@@ -81,8 +79,8 @@ const initialCards = [
 
 
 const Selectors = {
-  userName: "popup__input_type_name",
-  userJob: "popup__input_type_info",
+  userName: ".profile__name",
+  userJob: ".profile__specialization",
 };
 
 const userInfo = new UserInfo(Selectors);
@@ -132,8 +130,8 @@ const cardSection = new Section(
 cardSection.renderItems();
 
 
-buttonOpenPopupPlace.addEventListener("click", () => {
-  popupAdd.open();
+buttonOpenPopupProfile.addEventListener("click", () => {
+  popupAddProfile.open();
   const inputValues = userInfo.getUserInfo();
   profileNameInput.value = inputValues.name;
   profileInfoInput.value = inputValues.job;
@@ -142,7 +140,7 @@ buttonOpenPopupPlace.addEventListener("click", () => {
   profileInfoInput.dispatchEvent(event);
 });
 
-buttonOpenPopupProfile.addEventListener("click", () => {
-  popupAddProfile.open();
+buttonOpenPopupPlace.addEventListener("click", () => {
+  popupAdd.open();
   formElementProfile.disabledButton();
 });
