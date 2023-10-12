@@ -1,10 +1,10 @@
-import { Card } from "./Card.js";
+import { Card } from "../scripts/Card.js";
 
-import { FormValidator } from "./FormValidation.js";
+import { FormValidator } from "../scripts/FormValidation.js";
 
-import { config } from "./configs.js";
+import { config } from "../scripts/configs.js";
 
-import { PopupWithImage } from "./PopupWithImage.js";
+import { PopupWithImage } from "../scripts/PopupWithImage.js";
 
 import { PopupWithForm } from "../scripts/PopupWithForm.js";
 
