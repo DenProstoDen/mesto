@@ -1,3 +1,5 @@
+import './index.css';
+
 import { Card } from "../scripts/Card.js";
 
 import { FormValidator } from "../scripts/FormValidation.js";
