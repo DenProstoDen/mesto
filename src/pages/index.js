@@ -4,7 +4,7 @@ import { Card } from "../scripts/Card.js";
 
 import { FormValidator } from "../scripts/FormValidation.js";
 
-import { config } from "../scripts/configs.js";
+import { config } from "../utils/configs.js";
 
 import { PopupWithImage } from "../scripts/PopupWithImage.js";
 
