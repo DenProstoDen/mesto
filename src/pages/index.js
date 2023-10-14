@@ -117,6 +117,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
+      const cards = createElement(item)
       cardSection.addItem(createElement(item));
     },
   },
