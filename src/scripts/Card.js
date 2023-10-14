@@ -18,7 +18,7 @@ export class Card {
     this._card = this._getTemplate();
 
     this._card.querySelector('.card__text').textContent = this._name;
-    this._card.querySelector('.card__text').alt = this._name;
+    this._card.querySelector('.card__img').alt = this._name;
     this._card.querySelector('.card__img').src = this._link;
 
     this._setEventListeners();

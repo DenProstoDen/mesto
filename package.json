@@ -2,9 +2,9 @@
   "name": "mesto",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js --mode production",
+  "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode production",
     "dev": "webpack serve"
   },
   "author": "",

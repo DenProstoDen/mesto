@@ -43,13 +43,6 @@ const popupImgNode = (name, link) => {
   popupWithImage.open(name, link);
 };
 
-const formList = document.querySelectorAll('.popup__form');
-formList.forEach((form) => {
-  const formValidator = new FormValidator(form, config);
-  formValidator.enableValidation()
-})
-
-
 
 const initialCards = [
     {
@@ -80,12 +73,12 @@ const initialCards = [
 
 
 
-const Selectors = {
+const profileSelectors = {
   userName: ".profile__name",
   userJob: ".profile__specialization",
 };
 
-const userInfo = new UserInfo(Selectors);
+const userInfo = new UserInfo(profileSelectors);
 
 const popupAddProfile = new PopupWithForm(
   {
@@ -138,8 +131,7 @@ buttonOpenPopupProfile.addEventListener("click", () => {
   profileNameInput.value = inputValues.name;
   profileInfoInput.value = inputValues.job;
   const event = new Event("input");
-  profileNameInput.dispatchEvent(event);
-  profileInfoInput.dispatchEvent(event);
+  resetValidationState();
 });
 
 buttonOpenPopupPlace.addEventListener("click", () => {
