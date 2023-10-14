@@ -131,8 +131,6 @@ buttonOpenPopupProfile.addEventListener("click", () => {
   const inputValues = userInfo.getUserInfo();
   profileNameInput.value = inputValues.name;
   profileInfoInput.value = inputValues.job;
-  const event = new Event("input");
-  resetValidationState();
 });
 
 buttonOpenPopupPlace.addEventListener("click", () => {
