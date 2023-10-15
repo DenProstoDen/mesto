@@ -23,7 +23,6 @@ const profileInfoInput = document.querySelector('.popup__input_type_info');
 const buttonOpenPopupPlace = document.querySelector('.profile__add-button');
 const buttonOpenPopupProfile = document.querySelector('.profile__pencil');
 //template
-const cards = document.querySelector('.elements__list')
 const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place');
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
 
@@ -121,7 +120,7 @@ const cardSection = new Section(
       cardSection.addItem(createElement(item));
     },
   },
-  cards
+  ".elements__list"
 );
 cardSection.renderItems();
 
