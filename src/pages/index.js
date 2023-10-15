@@ -27,6 +27,15 @@ const cards = document.querySelector('.elements__list')
 const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place');
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
 
+
+
+const formElementProfile = new FormValidator(formEditProfile, config);
+formElementProfile.enableValidation();
+
+const formElementPlace = new FormValidator(formEditPlace, config);
+formElementPlace.enableValidation();
+
+
 const popupWithImage = new PopupWithImage(".img-add");
 popupWithImage.setEventListeners();
 
@@ -122,6 +131,7 @@ buttonOpenPopupProfile.addEventListener("click", () => {
   const inputValues = userInfo.getUserInfo();
   profileNameInput.value = inputValues.name;
   profileInfoInput.value = inputValues.job;
+  formElementProfile.enableValidation();
 });
 
 buttonOpenPopupPlace.addEventListener("click", () => {
