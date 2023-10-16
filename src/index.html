@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link href="./pages/index.css" rel="stylesheet" /> -->
     <title>Место</title>
   </head>
   <body class="body root">
@@ -103,24 +102,34 @@
       <div class="popup__container">
         <button type="button" class="popup__close-button"></button>
         <h2 class="popup__header">Обновить аватар</h2>
-        <form id="formEditAvatar" class="popup__form" name="avatarForm" novalidate>
-        <input class="popup__input popup__input_type_avatar" type="url" placeholder="Ссылка" name="placeName" id="editAvatar" name="editAvatar" required/>
-        <span id="avatarLink-error" class="error"></span>
-        <button type="submit" class="popup__save-button">Сохранить</button>
+        <form id="formEditAvatar" class="popup__form popup__form_avatar" name="avatarForm">
+          <input class="popup__input popup__input_type_avatar" type="url" placeholder="Ссылка" name="avatar" name="editAvatar" required/>
+          <span id="avatar-error" class="error"></span>
+          <button type="submit" class="popup__save-button" name="submitAva">Сменить</button>
+        </form> 
       </div>
     </div>
+      <!-- <div class="popup popup-delete">
+        <div class="popup__container">
+          <button type="button" class="popup__close-button"></button>
+          <h2 class="popup__header">Вы уверены?</h2>
+          <form name="cardDelete" class="popup__form popup__form_delete">
+            <button type="submit" class="popup__save-button popup__delete">Да</button>
+          </form> 
+        </div>
+      </div>
+    </div> -->
     <template class="template-cards">
       <div class="card">
         <img class="card__img" src="." alt=".">
         <div class="card__description">
           <h2 class="card__text"></h2>
           <button class="card__like-button" type="button">
-            <span class="card__like-numbers">6</span>
+            <span class="card__like-numbers"></span>
           </button> 
         </div>
         <button class="card__delete-button" type="button"></button>
       </div>
     </template>
-    <!-- <script async src="./pages/index.js" type="module"></script> -->
   </body>
 </html>

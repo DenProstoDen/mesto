@@ -14,14 +14,19 @@ import { UserInfo } from "../scripts/UserInfo.js";
 
 import { Section } from "../scripts/Section.js";
 
+// import { Api } from "../scripts/Api.js";
+
+// import PopupDeleteCard from '../scripts/PopupDeleteCard.js'
+
 //popup id section
 const profileNameInput = document.querySelector('.popup__input_type_name');
 const profileInfoInput = document.querySelector('.popup__input_type_info');
-
+const inputLinkFormAddNewAvatar = document.querySelector('.popup__input_type_avatar')
 
 //popup place section
 const buttonOpenPopupPlace = document.querySelector('.profile__add-button');
 const buttonOpenPopupProfile = document.querySelector('.profile__pencil');
+const buttonOpenPopupAvatar = document.querySelector('.profile__avatar-button')
 //template
 const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place');
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
@@ -34,6 +39,8 @@ formElementProfile.enableValidation();
 const formElementPlace = new FormValidator(formEditPlace, config);
 formElementPlace.enableValidation();
 
+const formElementAva = new FormValidator(formEditAvatar, config)
+formElementAva.enableValidation();
 
 const popupWithImage = new PopupWithImage(".img-add");
 popupWithImage.setEventListeners();
@@ -75,6 +82,7 @@ const initialCards = [
 const profileSelectors = {
   userName: ".profile__name",
   userJob: ".profile__specialization",
+  userAvatar: ".profile__avatar"
 };
 
 const userInfo = new UserInfo(profileSelectors);
@@ -106,6 +114,20 @@ const popupAdd = new PopupWithForm(
 
 popupAdd.setEventListeners();
 
+const popupAvatar = new PopupWithForm(
+    {
+      handleFormSubmit: (data) => {
+        userInfo.setUserAvatar(data);
+        console.log(data)
+      },
+    },
+  ".popup-avatar"
+);
+popupAvatar.setEventListeners();
+
+
+
+
 const createElement = (element) => {
   const cardElement = new Card(element, ".template-cards", popupImgNode);
   const card = cardElement.generateCard();
@@ -130,10 +152,15 @@ buttonOpenPopupProfile.addEventListener("click", () => {
   const inputValues = userInfo.getUserInfo();
   profileNameInput.value = inputValues.name;
   profileInfoInput.value = inputValues.job;
-  formElementProfile.enableValidation();
+  formElementProfile.disabledButton();
 });
 
 buttonOpenPopupPlace.addEventListener("click", () => {
   popupAdd.open();
+  formElementProfile.disabledButton();
+});
+
+buttonOpenPopupAvatar.addEventListener("click", () => {
+  popupAvatar.open();
   formElementProfile.disabledButton();
 });
