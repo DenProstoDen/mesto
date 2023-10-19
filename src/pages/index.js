@@ -43,24 +43,19 @@ const apiConfig = {
 }
 const api = new Api(apiConfig);
 
+let meID;
+
+
 Promise.all([api.getName(), api.getCard()])
   .then(([dataUser, dataCard]) => {
-    dataCard.forEach((element) => (element.meID = dataUser._id));
+    meID = dataUser._id;
     cardSection.renderItems(dataCard);
-    userInfo.setUserInfo({name: dataUser.name, job: dataUser.about, avatar: dataUser.avatar})
+    userInfo.setUserInfo(dataUser)
   })
   .catch((error) =>
     console.error(`Ошибка при попытке загрузить карточки ${error}`)
   );
 
-
-
-
-const profileSelectors = {
-  userName: ".profile__name",
-  userJob: ".profile__specialization",
-  userAvatar: ".profile__avatar"
-};
 
 const formElementProfile = new FormValidator(formEditProfile, config);
 formElementProfile.enableValidation();
@@ -148,6 +143,8 @@ popupDeleteCard.setEventListeners();
   },
   ".elements__list"
   );
+
+  
 
   const popupAdd = new PopupWithForm((data) =>{
     popupAdd.renderLoading(true);
