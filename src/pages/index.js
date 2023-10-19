@@ -14,7 +14,7 @@ import { UserInfo } from "../scripts/UserInfo.js";
 
 import { Section } from "../scripts/Section.js";
 
-// import { Api } from "../scripts/Api.js";
+import  Api  from "../scripts/Api.js";
 
 // import PopupDeleteCard from '../scripts/PopupDeleteCard.js'
 
@@ -30,6 +30,39 @@ const buttonOpenPopupAvatar = document.querySelector('.profile__avatar-button')
 //template
 const inputNameFormAddNewCard = document.querySelector('.popup__input_type_place');
 const inputLinkFormAddNewCard = document.querySelector('.popup__input_type_link');
+
+const apiConfig = {
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-77",
+  headers:
+  {
+    authorization: '35b6e574-0c40-4e25-8a93-de8f952c7688',
+    'Content-Type': 'application/json'
+  }
+}
+const api = new Api(apiConfig);
+
+function getProfileName() {
+  api.getName()
+  .then((item) => {
+    const userName = item.name;
+    const userJob = item.about;
+    const userAvatar = item.avatar;
+    document.querySelector('.profile__name').textContent = userName;
+    document.querySelector('.profile__specialization').textContent = userJob;
+    document.querySelector('.profile__avatar').src = userAvatar;
+  })
+}
+getProfileName();
+
+const profileSelectors = {
+  userName: ".profile__name",
+  userJob: ".profile__specialization",
+  userAvatar: ".profile__avatar"
+};
+
+
+
+
 
 
 
@@ -79,35 +112,30 @@ const initialCards = [
 
 
 
-const profileSelectors = {
-  userName: ".profile__name",
-  userJob: ".profile__specialization",
-  userAvatar: ".profile__avatar"
-};
 
-const userInfo = new UserInfo(profileSelectors);
+const userInfo = new UserInfo(
+  ".profile__name",
+  ".profile__specialization",
+  ".profile__avatar"
+);
 
 const popupAddProfile = new PopupWithForm(
-  {
-      handleFormSubmit: (userData) => {
-        userInfo.setUserInfo(userData);
-      },
-    },
+  (data) => {
+    api.editProfileInfo({ name: data.name, about: data.job }).then(() => {
+    getProfileName();
+    });
+  },
     ".popup-add"
-  );
+  )
   popupAddProfile.setEventListeners();
 
 
-const popupAdd = new PopupWithForm(
-  {
-    handleFormSubmit: (data) => {
-      const newCard = {
-        name: data[inputNameFormAddNewCard.name],
-        link: data[inputLinkFormAddNewCard.name],
-      };
-      const cardAddElement = createElement(newCard);
-      cardSection.addItem(cardAddElement);
-    },
+const popupAdd = new PopupWithForm((data) =>{
+  api.addCard({name: data["placeName"], link:  data["placeLink"]})
+  .then((item) => {
+    createElement(item)
+    api.getCard(createElement(item));
+  })
   },
   ".popup_place-add"
 );
@@ -134,6 +162,10 @@ const createElement = (element) => {
   return card;
 };
 
+
+
+api.getCard()
+.then((items) => {
 const cardSection = new Section(
   {
     items: initialCards,
@@ -145,6 +177,11 @@ const cardSection = new Section(
   ".elements__list"
 );
 cardSection.renderItems();
+});
+
+
+
+
 
 
 buttonOpenPopupProfile.addEventListener("click", () => {
