@@ -43,22 +43,6 @@ const apiConfig = {
 }
 const api = new Api(apiConfig);
 
-// function getProfileName() {
-//   api.getName()
-//   .then((item) => {
-//     const userName = item.name;
-//     const userJob = item.about;
-//     const userAvatar = item.avatar;
-//     document.querySelector('.profile__name').textContent = userName;
-//     document.querySelector('.profile__specialization').textContent = userJob;
-//     document.querySelector('.profile__avatar').src = userAvatar;
-//   })
-//   .catch(error => console.error(`Ошибка пользователя ${error}`))
-// }
-// getProfileName();
-
-
-
 Promise.all([api.getName(), api.getCard()])
   .then(([dataUser, dataCard]) => {
     dataCard.forEach((element) => (element.meID = dataUser._id));
@@ -93,8 +77,6 @@ popupWithImage.setEventListeners();
 const popupImgNode = (name, link) => {
   popupWithImage.open(name, link);
 };
-
-
 
 const userInfo = new UserInfo(
   ".profile__name",
