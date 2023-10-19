@@ -5,6 +5,16 @@ export  class PopupDeleteCard extends Popup {
     super(popupSelector);
     this._submitFunction = submitFunction;
     this._form = this._popup.querySelector('.popup__form');
+    this._popupDelete = document.querySelector('.popup-delete');
+    this._popupDeleteButton = this._popupDelete.querySelector('.popup__delete-btn');
+    }
+    _handleDelete() {
+        this._popupDelete.classList.add('popup_opened');
+        this._popupDeleteButton.addEventListener("click", () => {
+           this._card.remove();
+           this._card = null;
+           this._popupDelete.classList.remove('popup_opened');
+        })
     }
     setEventListeners() {
         super.setEventListeners();

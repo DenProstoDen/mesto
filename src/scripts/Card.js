@@ -10,8 +10,6 @@ export class Card {
     this._ID = data._id;
     this._ownerID = data.owner._id;
     this._openDeletePopup = openDeletePopup;
-    this._popupDelete = document.querySelector('.popup-delete');
-    this._popupDeleteButton = this._popupDelete.querySelector('.popup__delete-btn');
     this._like = like;
     this._removeLike = removeLike; 
   }
@@ -54,7 +52,9 @@ export class Card {
         .catch(error => console.error(`Ошибка лайкa ${error}`))
     }
   }
-
+  _handleCardTrash() {
+    this._openDeletePopup({card: this, cardID: this._ID})
+  }
   _setHasLike() {
     const hasLike = this._likes.some((card) => {
         return card._id === this._meID
@@ -74,15 +74,6 @@ export class Card {
     this._card.querySelector(".card__like-numbers").textContent = this._likesNumber;
     this._setHasLike()
   }
-
-  _handleDelete() {
-    this._popupDelete.classList.add('popup_opened');
-    this._popupDeleteButton.addEventListener("click", () => {
-       this._card.remove();
-       this._card = null;
-       this._popupDelete.classList.remove('popup_opened');
-    })
-  }
   _showCardButton () {
     if (this._ownerID === this._meID) {
       this._card.querySelector(".card__delete-button").style.display = 'block'
@@ -90,10 +81,6 @@ export class Card {
     else {
       this._card.querySelector(".card__delete-button").style.display = 'none'
     }
-  }
-
-  _handleCardTrash() {
-    this._openDeletePopup({card: this, cardID: this._ID})
   }
   cardTrash() {
     this._card.remove();
