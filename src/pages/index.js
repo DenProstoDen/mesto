@@ -96,8 +96,6 @@ const popupImgNode = (name, link) => {
 
 
 
-
-
 const userInfo = new UserInfo(
   ".profile__name",
   ".profile__specialization",
