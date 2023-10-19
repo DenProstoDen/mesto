@@ -1,24 +1,24 @@
 import './index.css';
 
-import { Card } from "../scripts/Card.js";
+import { Card } from "../components/Card.js";
 
-import { FormValidator } from "../scripts/FormValidation.js";
+import { FormValidator } from "../components/FormValidation.js";
 
 import { config } from "../utils/configs.js";
 
-import { PopupWithImage } from "../scripts/PopupWithImage.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
 
-import { PopupWithForm } from "../scripts/PopupWithForm.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
 
-import { UserInfo } from "../scripts/UserInfo.js";
+import { UserInfo } from "../components/UserInfo.js";
 
-import { Section } from "../scripts/Section.js";
+import { Section } from "../components/Section.js";
 
-import  Api  from "../scripts/Api.js";
+import  Api  from "../components/Api.js";
 
-import { PopupDeleteCard } from '../scripts/PopupDeleteCard.js'
+import { PopupDeleteCard } from '../components/PopupDeleteCard.js'
 
-import { Popup }  from "../scripts/Popup.js";
+import { Popup }  from "../components/Popup.js";
 
 //popup id section
 const profileNameInput = document.querySelector('.popup__input_type_name');
