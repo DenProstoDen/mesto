@@ -10,7 +10,7 @@ export default class Api {
     constructor({baseUrl, headers}) {
         this._url = baseUrl;
         this._headers = headers;
-    }
+  }
 
     getName() {
         return fetch(`${this._url}/users/me `, {
@@ -18,7 +18,7 @@ export default class Api {
             method: 'GET',
           })
           .then((response) => onError(response))
-    }
+  }
 
     // /cards массив карточек с сервера
     getCard() {
@@ -27,7 +27,7 @@ export default class Api {
             method: 'GET',
         })
         .then((response) => onError(response))
-    }
+  }
 
     editProfileInfo({name, about}) {
         return fetch(`${this._url}/users/me`, {
@@ -39,16 +39,33 @@ export default class Api {
               })
         })
         .then((response) => onError(response))
-    }
+  }
 
-    addCard({name, link}) {
+    addCard(data) {
         return fetch(`${this._url}/cards`, {
           headers: this._headers,
           method: 'POST',
           body: JSON.stringify({ 
-            name,
-            link })
+            name: data.name,
+            link: data.link })
         })
         .then((response) => onError(response))
-    }
+  }
+    changeAvatar(data) {
+      return fetch(`${this._url}/users/me/avatar`, {
+        headers: this._headers,
+        method: 'PATCH',
+        body: JSON.stringify({
+          avatar: data.avatar
+          })
+    })
+    .then((response) => onError(response))
+  }
+    deleteCard(cardId) {
+      return fetch(`${this._url}/cards/${cardId} `, {
+      headers: this._headers,
+      method: 'DELETE',
+    })
+    .then((response) => onError(response))
+  }
 }

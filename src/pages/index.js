@@ -16,7 +16,9 @@ import { Section } from "../scripts/Section.js";
 
 import  Api  from "../scripts/Api.js";
 
-// import PopupDeleteCard from '../scripts/PopupDeleteCard.js'
+import { PopupDeleteCard } from '../scripts/PopupDeleteCard.js'
+
+import { Popup }  from "../scripts/Popup.js";
 
 //popup id section
 const profileNameInput = document.querySelector('.popup__input_type_name');
@@ -59,9 +61,6 @@ const profileSelectors = {
   userJob: ".profile__specialization",
   userAvatar: ".profile__avatar"
 };
-
-
-
 
 
 
@@ -130,70 +129,66 @@ const popupAddProfile = new PopupWithForm(
   popupAddProfile.setEventListeners();
 
 
-const popupAdd = new PopupWithForm((data) =>{
-  api.addCard({name: data["placeName"], link:  data["placeLink"]})
-  .then((item) => {
-    createElement(item)
-    api.getCard(createElement(item));
+
+
+const popupAvatar = new PopupWithForm((data) => {
+  api.changeAvatar({avatar: data["avatar"]})
+  .then(() => {
+    getProfileName();
   })
-  },
-  ".popup_place-add"
-);
-
-popupAdd.setEventListeners();
-
-const popupAvatar = new PopupWithForm(
-    {
-      handleFormSubmit: (data) => {
-        userInfo.setUserAvatar(data);
-        console.log(data)
-      },
-    },
-  ".popup-avatar"
-);
+}, ".popup-avatar")
+  
 popupAvatar.setEventListeners();
 
 
-
-
-const createElement = (element) => {
-  const cardElement = new Card(element, ".template-cards", popupImgNode);
+const createElement = (data) => {
+  const cardElement = new Card(data, ".template-cards", popupImgNode, popupDeleteCard.open);
   const card = cardElement.generateCard();
   return card;
 };
 
+const popupDeleteCard = new Popup('.popup-delete');
+
+popupDeleteCard.setEventListeners();
+
+
 
 
 api.getCard()
-.then((items) => {
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const cards = createElement(item)
-      cardSection.addItem(createElement(item));
-    },
+.then((item) => {
+  const cardSection = new Section((item) => {
+  const cardElement = createElement(item);
+  cardSection.addItemAppend(cardElement);
   },
   ".elements__list"
-);
-cardSection.renderItems();
+  );
+
+  const popupAdd = new PopupWithForm((data) =>{
+    Promise.all([api.getName(), api.addCard({name: data["placeName"], link:  data["placeLink"]})])
+    .then(([dataUser, dataCard]) => {
+      dataCard.meID = dataUser._id;
+      cardSection.addItem(createElement(dataCard));
+    })
+    },
+    ".popup_place-add"
+  );
+  
+  popupAdd.setEventListeners();
+
+
+  buttonOpenPopupPlace.addEventListener("click", () => {
+    popupAdd.open();
+    formElementProfile.disabledButton();
+  });
+  
+  cardSection.renderItems(item);
 });
-
-
-
-
-
 
 buttonOpenPopupProfile.addEventListener("click", () => {
   popupAddProfile.open();
   const inputValues = userInfo.getUserInfo();
   profileNameInput.value = inputValues.name;
   profileInfoInput.value = inputValues.job;
-  formElementProfile.disabledButton();
-});
-
-buttonOpenPopupPlace.addEventListener("click", () => {
-  popupAdd.open();
   formElementProfile.disabledButton();
 });
 

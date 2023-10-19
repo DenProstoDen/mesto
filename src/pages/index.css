@@ -54,7 +54,7 @@
 @import url(../blocks/elements/__list/elements__list.css);
 @import url(../blocks/card/card__like-numbers.css);
 @import url(../blocks/profile/profile__avatar-button.css);
-
+@import url(../blocks/popup/__delete/popup__delete_btn.css);
 /* * {
     border: 1px solid red;
 } */
