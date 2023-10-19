@@ -89,7 +89,8 @@ const popupAddProfile = new PopupWithForm(
     popupAddProfile.renderLoading(true);
     api.editProfileInfo({ name: data.name, about: data.job })
     .then((item) => {
-      userInfo.setUserInfo({name: item.name, job: item.about, avatar: item.avatar})
+      userInfo.setUserInfo(item)
+      popupAddProfile.close();
     })
     .catch((error) => console.error(
       `Ошибка пользователя ${error}`
@@ -103,13 +104,11 @@ const popupAddProfile = new PopupWithForm(
   popupAddProfile.setEventListeners();
 
 
-
-
 const popupAvatar = new PopupWithForm((data) => {
   popupAvatar.renderLoading(true);
   api.changeAvatar({avatar: data["avatar"]})
   .then((item) => {
-    userInfo.setUserInfo({name: item.name, job: item.about, avatar: item.avatar});
+    userInfo.setUserInfo(item);
     popupAvatar.close();
   })
   .catch(error => console.error(`Ошибка аватара ${error}`))
@@ -180,10 +179,10 @@ buttonOpenPopupProfile.addEventListener("click", () => {
   const inputValues = userInfo.getUserInfo();
   profileNameInput.value = inputValues.name;
   profileInfoInput.value = inputValues.job;
-  formElementProfile.disabledButton();
+  formElementPlace.disabledButton();
 });
 
 buttonOpenPopupAvatar.addEventListener("click", () => {
   popupAvatar.open();
-  formElementProfile.disabledButton();
+  formElementAva.disabledButton();
 });
