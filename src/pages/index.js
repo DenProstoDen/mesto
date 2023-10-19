@@ -156,6 +156,7 @@ popupDeleteCard.setEventListeners();
     .then(([dataUser, dataCard]) => {
       dataCard.meID = dataUser._id;
       cardSection.addItem(createElement(dataCard));
+      popupAdd.close();
     })
     .catch(error => console.error(`Ошибка карточки ${error}`))
     .finally(() => {

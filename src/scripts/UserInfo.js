@@ -11,9 +11,11 @@ export class UserInfo {
             avatar: this._avatar.src,
         };
     }
-    setUserInfo({ name, job, avatar }) {
+    setUserInfo({ name, job}) {
         this._name.textContent = name;
         this._job.textContent = job;
+    }
+    setUserAvatar({avatar}) {
         this._avatar.src = avatar;
     }
 }
