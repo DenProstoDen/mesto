@@ -43,27 +43,40 @@ const apiConfig = {
 }
 const api = new Api(apiConfig);
 
-function getProfileName() {
-  api.getName()
-  .then((item) => {
-    const userName = item.name;
-    const userJob = item.about;
-    const userAvatar = item.avatar;
-    document.querySelector('.profile__name').textContent = userName;
-    document.querySelector('.profile__specialization').textContent = userJob;
-    document.querySelector('.profile__avatar').src = userAvatar;
+// function getProfileName() {
+//   api.getName()
+//   .then((item) => {
+//     const userName = item.name;
+//     const userJob = item.about;
+//     const userAvatar = item.avatar;
+//     document.querySelector('.profile__name').textContent = userName;
+//     document.querySelector('.profile__specialization').textContent = userJob;
+//     document.querySelector('.profile__avatar').src = userAvatar;
+//   })
+//   .catch(error => console.error(`Ошибка пользователя ${error}`))
+// }
+// getProfileName();
+
+
+
+Promise.all([api.getName(), api.getCard()])
+  .then(([dataUser, dataCard]) => {
+    dataCard.forEach((element) => (element.meID = dataUser._id));
+    cardSection.renderItems(dataCard);
+    userInfo.setUserInfo({name: dataUser.name, job: dataUser.about, avatar: dataUser.avatar})
   })
-}
-getProfileName();
+  .catch((error) =>
+    console.error(`Ошибка при попытке загрузить карточки ${error}`)
+  );
+
+
+
 
 const profileSelectors = {
   userName: ".profile__name",
   userJob: ".profile__specialization",
   userAvatar: ".profile__avatar"
 };
-
-
-
 
 const formElementProfile = new FormValidator(formEditProfile, config);
 formElementProfile.enableValidation();
@@ -120,8 +133,16 @@ const userInfo = new UserInfo(
 
 const popupAddProfile = new PopupWithForm(
   (data) => {
-    api.editProfileInfo({ name: data.name, about: data.job }).then(() => {
-    getProfileName();
+    popupAddProfile.renderLoading(true);
+    api.editProfileInfo({ name: data.name, about: data.job })
+    .then((item) => {
+      userInfo.setUserInfo({name: item.name, job: item.about, avatar: item.avatar})
+    })
+    .catch((error) => console.error(
+      `Ошибка пользователя ${error}`
+    ))
+    .finally(() => {
+      popupAddProfile.renderLoading(false);
     });
   },
     ".popup-add"
@@ -132,30 +153,43 @@ const popupAddProfile = new PopupWithForm(
 
 
 const popupAvatar = new PopupWithForm((data) => {
+  popupAvatar.renderLoading(true);
   api.changeAvatar({avatar: data["avatar"]})
-  .then(() => {
-    getProfileName();
+  .then((item) => {
+    userInfo.setUserInfo({name: item.name, job: item.about, avatar: item.avatar});
+    popupAvatar.close();
   })
+  .catch(error => console.error(`Ошибка аватара ${error}`))
+  .finally(() => {popupAvatar.renderLoading(false);
+  });
 }, ".popup-avatar")
   
 popupAvatar.setEventListeners();
 
 
 const createElement = (data) => {
-  const cardElement = new Card(data, ".template-cards", popupImgNode, popupDeleteCard.open);
+  const like = (cardId) => {
+    return api.addLike(cardId);
+  };
+  const removeLike = (cardId) => {
+    return api.removeLike(cardId);
+  };
+  const cardElement = new Card(data, ".template-cards", popupImgNode, popupDeleteCard.open, like, removeLike);
   const card = cardElement.generateCard();
   return card;
 };
 
-const popupDeleteCard = new Popup('.popup-delete');
-
+const popupDeleteCard = new PopupDeleteCard('.popup-delete', ({card, cardID}) => {
+  api.deleteCard(cardID)
+  .then(() => {
+    card.cardTrash();
+    popupDeleteCard.close();
+  })
+})
 popupDeleteCard.setEventListeners();
 
 
 
-
-api.getCard()
-.then((item) => {
   const cardSection = new Section((item) => {
   const cardElement = createElement(item);
   cardSection.addItemAppend(cardElement);
@@ -164,11 +198,16 @@ api.getCard()
   );
 
   const popupAdd = new PopupWithForm((data) =>{
+    popupAdd.renderLoading(true);
     Promise.all([api.getName(), api.addCard({name: data["placeName"], link:  data["placeLink"]})])
     .then(([dataUser, dataCard]) => {
       dataCard.meID = dataUser._id;
       cardSection.addItem(createElement(dataCard));
     })
+    .catch(error => console.error(`Ошибка карточки ${error}`))
+    .finally(() => {
+      popupAdd.renderLoading(false);
+    });
     },
     ".popup_place-add"
   );
@@ -181,8 +220,6 @@ api.getCard()
     formElementProfile.disabledButton();
   });
   
-  cardSection.renderItems(item);
-});
 
 buttonOpenPopupProfile.addEventListener("click", () => {
   popupAddProfile.open();

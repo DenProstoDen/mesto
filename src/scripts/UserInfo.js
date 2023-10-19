@@ -11,9 +11,9 @@ export class UserInfo {
             avatar: this._avatar.src,
         };
     }
-    setUserInfo(user) {
-        this._name.textContent = user.name;
-        this._job.textContent = user.job;
+    setUserInfo({ name, job, avatar }) {
+        this._name.textContent = name;
+        this._job.textContent = job;
         this._avatar.src = avatar;
     }
 }

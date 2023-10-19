@@ -1,5 +1,5 @@
 export class Card {
-  constructor(data, templateSelector, handleCardClick, openDeletePopup) {
+  constructor(data, templateSelector, handleCardClick, openDeletePopup, like, removeLike) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
@@ -12,6 +12,8 @@ export class Card {
     this._openDeletePopup = openDeletePopup;
     this._popupDelete = document.querySelector('.popup-delete');
     this._popupDeleteButton = this._popupDelete.querySelector('.popup__delete-btn');
+    this._like = like;
+    this._removeLike = removeLike; 
   }
 
   _getTemplate() {
@@ -28,15 +30,49 @@ export class Card {
     this._card.querySelector('.card__text').textContent = this._name;
     this._card.querySelector('.card__img').alt = this._name;
     this._card.querySelector('.card__img').src = this._link;
-    this._card.querySelector('.card__like-numbers').textContent = this._likesNumber;
-    this._removeCardButton();
+    this._likeButton = this._card.querySelector(".card__like-button");
+    this._setLikesState(this._likes);
+    this._showCardButton();
     this._setEventListeners();
 
     return this._card;
   }
 
-  _handleLike() {
-    this._card.querySelector(".card__like-button").classList.toggle("card__like-button_active");
+  _handleToggleLike() {
+    if(this.hasLike) {
+      this._removeLike(this._ID)
+      .then((updatedCard)=>{
+        this._setLikesState(updatedCard.likes)
+      })
+      .catch(error => console.error(`Ошибка лайкa ${error}`))
+    }
+    else {
+        this._like(this._ID)
+        .then((updatedCard)=>{
+          this._setLikesState(updatedCard.likes)
+        })
+        .catch(error => console.error(`Ошибка лайкa ${error}`))
+    }
+  }
+
+  _setHasLike() {
+    const hasLike = this._likes.some((card) => {
+        return card._id === this._meID
+      })
+      this.hasLike = hasLike;
+      if (hasLike) {
+        this._likeButton.classList.add("card__like-button_active");
+      }
+      else {
+        this._likeButton.classList.remove("card__like-button_active");
+      }
+    }
+
+  _setLikesState(likes) {
+    this._likes = likes;
+    this._likesNumber = likes.length;
+    this._card.querySelector(".card__like-numbers").textContent = this._likesNumber;
+    this._setHasLike()
   }
 
   _handleDelete() {
@@ -47,7 +83,7 @@ export class Card {
        this._popupDelete.classList.remove('popup_opened');
     })
   }
-  _removeCardButton () {
+  _showCardButton () {
     if (this._ownerID === this._meID) {
       this._card.querySelector(".card__delete-button").style.display = 'block'
     }
@@ -57,24 +93,20 @@ export class Card {
   }
 
   _handleCardTrash() {
-    this._popupDelete.classList.add('popup_opened');
-    this._popupDeleteButton.addEventListener("click", () => {
-       this._card.remove();
-       this._card = null;
-       this._popupDelete.classList.remove('popup_opened');
-    })
+    this._openDeletePopup({card: this, cardID: this._ID})
   }
   cardTrash() {
     this._card.remove();
     this._card = null;
-}
+  }
+
   _setEventListeners() {
     this._card.querySelector(".card__delete-button").addEventListener('click', () => {
       this._handleCardTrash();
     });
 
-    this._card.querySelector(".card__like-button").addEventListener('click', () => {
-      this._handleLike();
+    this._likeButton.addEventListener('click', () => {
+      this._handleToggleLike();
     });
 
     this._card.querySelector(".card__img").addEventListener('click', () => {
