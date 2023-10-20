@@ -43,9 +43,18 @@ const apiConfig = {
 }
 const api = new Api(apiConfig);
 
+let meID;
 
 
-
+Promise.all([api.getName(), api.getCard()])
+  .then(([dataUser, dataCard]) => {
+    meID = dataUser._id;
+    cardSection.renderItems(dataCard);
+    userInfo.setUserInfo(dataUser)
+  })
+  .catch((error) =>
+    console.error(`Ошибка при попытке загрузить карточки ${error}`)
+  );
 
 
 const formElementProfile = new FormValidator(formEditProfile, config);
@@ -112,7 +121,7 @@ const createElement = (data) => {
   const removeLike = (cardId) => {
     return api.removeLike(cardId);
   };
-  const cardElement = new Card(data, ".template-cards", popupImgNode, popupDeleteCard.open, like, removeLike);
+  const cardElement = new Card(data, ".template-cards", popupImgNode, popupDeleteCard.open, like, removeLike, meID);
   const card = cardElement.generateCard();
   return card;
 };
@@ -137,20 +146,6 @@ popupDeleteCard.setEventListeners();
   },
   ".elements__list"
   );
-
-  let meID;
-  
-  Promise.all([api.getName(), api.getCard()])
-  .then(([dataUser, dataCard]) => {
-    meID = dataUser._id;
-    cardSection.renderItems(dataCard);
-    userInfo.setUserInfo(dataUser);
-  })
-  .catch((error) =>
-    console.error(`Ошибка загрузки карточки ${error}`)
-  );
-
-
 
   const popupAdd = new PopupWithForm((data) =>{
     popupAdd.renderLoading(true);

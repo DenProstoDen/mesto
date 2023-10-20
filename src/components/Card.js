@@ -1,17 +1,17 @@
 export class Card {
-  constructor(data, templateSelector, handleCardClick, openDeletePopup, like, removeLike) {
+  constructor(data, templateSelector, handleCardClick, openDeletePopup, like, removeLike, meID) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._likes = data.likes;
     this._likesNumber = data.likes.length;
-    this._meID = data.meID;
+    this._meID = meID;
     this._ID = data._id;
     this._ownerID = data.owner._id;
     this._openDeletePopup = openDeletePopup;
     this._like = like;
-    this._removeLike = removeLike; 
+    this._removeLike = removeLike;
   }
 
   _getTemplate() {
