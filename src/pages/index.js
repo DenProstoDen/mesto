@@ -152,7 +152,6 @@ popupDeleteCard.setEventListeners();
     api
     .addCard({name: data["placeName"], link:  data["placeLink"]})
     .then((dataCard) => {
-      console.log(dataCard)
       cardSection.addItem(createElement(dataCard));
       popupAdd.close();
     })
