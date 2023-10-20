@@ -43,7 +43,7 @@ const apiConfig = {
 }
 const api = new Api(apiConfig);
 
-let meID;
+
 
 
 Promise.all([api.getName(), api.getCard()])
@@ -132,6 +132,9 @@ const popupDeleteCard = new PopupDeleteCard('.popup-delete', ({card, cardID}) =>
     card.cardTrash();
     popupDeleteCard.close();
   })
+  .catch((error) =>
+  console.error(`Ошибка при удалении карточки ${error}`)
+);
 })
 popupDeleteCard.setEventListeners();
 
@@ -144,13 +147,26 @@ popupDeleteCard.setEventListeners();
   ".elements__list"
   );
 
+  let meID;
   
+  Promise.all([api.getName(), api.getCard()])
+  .then(([dataUser, dataCard]) => {
+    meID = dataUser._id;
+    cardSection.renderItems(dataCard);
+    userInfo.setUserInfo(dataUser);
+  })
+  .catch((error) =>
+    console.error(`Ошибка загрузки карточки ${error}`)
+  );
+
+
 
   const popupAdd = new PopupWithForm((data) =>{
     popupAdd.renderLoading(true);
-    Promise.all([api.getName(), api.addCard({name: data["placeName"], link:  data["placeLink"]})])
-    .then(([dataUser, dataCard]) => {
-      dataCard.meID = dataUser._id;
+    api
+    .addCard({name: data["placeName"], link:  data["placeLink"]})
+    .then((dataCard) => {
+      console.log(dataCard)
       cardSection.addItem(createElement(dataCard));
       popupAdd.close();
     })
@@ -158,7 +174,7 @@ popupDeleteCard.setEventListeners();
     .finally(() => {
       popupAdd.renderLoading(false);
     });
-    },
+  },  
     ".popup_place-add"
   );
   
@@ -167,7 +183,7 @@ popupDeleteCard.setEventListeners();
 
   buttonOpenPopupPlace.addEventListener("click", () => {
     popupAdd.open();
-    formElementProfile.disabledButton();
+    formElementPlace.disabledButton();
   });
   
 
@@ -176,7 +192,7 @@ buttonOpenPopupProfile.addEventListener("click", () => {
   const inputValues = userInfo.getUserInfo();
   profileNameInput.value = inputValues.name;
   profileInfoInput.value = inputValues.job;
-  formElementPlace.disabledButton();
+  formElementProfile.disabledButton();
 });
 
 buttonOpenPopupAvatar.addEventListener("click", () => {
