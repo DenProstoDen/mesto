@@ -46,15 +46,6 @@ const api = new Api(apiConfig);
 
 
 
-Promise.all([api.getName(), api.getCard()])
-  .then(([dataUser, dataCard]) => {
-    meID = dataUser._id;
-    cardSection.renderItems(dataCard);
-    userInfo.setUserInfo(dataUser)
-  })
-  .catch((error) =>
-    console.error(`Ошибка при попытке загрузить карточки ${error}`)
-  );
 
 
 const formElementProfile = new FormValidator(formEditProfile, config);
